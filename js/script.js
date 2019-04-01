@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 20, bottom: 30, left: 50},
+var margin = {top: 20, right: 20, bottom: 50, left: 50},
     width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -72,6 +72,23 @@ d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
     svg.append("g")
         .attr("class", "y axis")
         .call(yAxis);
+
+    svg.append("text")
+        .attr("class", "axis label")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left)
+        .attr("x",0 - (height / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Units");
+
+    svg.append("text")
+        .attr("class", "axis label")
+        .attr("y", 0 + (height + margin.bottom - 15))
+        .attr("x",0 + (width/2))
+        .attr("dy", ".5em")
+        .style("text-anchor", "middle")
+        .text("Age");
 
 });
 
