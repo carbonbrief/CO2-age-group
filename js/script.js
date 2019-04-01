@@ -45,7 +45,8 @@ d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
 
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.age; }));
-    y.domain([d3.min(data, function(d) {return Math.min(d.national, d.global); }), d3.max(data, function(d) {return Math.max(d.national, d.global); })]);
+    // y.domain([-100, d3.max(data, function(d) {return Math.max(d.national, d.global); })]);
+    y.domain([-100, 1600]);
 
     // Add the valueline path.
     svg.append("path")
@@ -63,11 +64,13 @@ d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
 
     // Add the X Axis
     svg.append("g")
+        .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
 
     // Add the Y Axis
     svg.append("g")
+        .attr("class", "y axis")
         .call(yAxis);
 
 });
@@ -97,7 +100,8 @@ function update () {
 
         // Scale the range of the data
         x.domain(d3.extent(data, function(d) { return d.age; }));
-        y.domain([d3.min(data, function(d) {return Math.min(d.national, d.global); }), d3.max(data, function(d) {return Math.max(d.national, d.global); })]);
+        // y.domain([-100, d3.max(data, function(d) {return Math.max(d.national, d.global); })]);
+        y.domain([-100, 1600]);
 
         svg = d3.select("#chart").transition();
 
