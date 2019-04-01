@@ -68,11 +68,29 @@ d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
 
 });
 
+let region = "United Kingdom";
+let scenario = "2.6";
+
 function update () {
 
-    console.log("change");
+    console.log(region);
+    console.log(scenario);
 
 }
 
-document.getElementById('selectorRegion').addEventListener("change", update);
-document.getElementById('selectorScenario').addEventListener("change", update);
+document.getElementById('selectorRegion').addEventListener("change", function(e) {
+
+    region = e.target.value;
+
+    update(region);
+
+});
+
+
+document.getElementById('selectorScenario').addEventListener("change", function(e) {
+
+    scenario = e.target.value;
+
+    update(scenario);
+
+});
