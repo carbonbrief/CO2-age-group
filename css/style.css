@@ -4,6 +4,11 @@ body {
     font-family: 'PT Sans', Helvetica, Arial, Sans-serif;
 }
 
+#chart {
+    max-width: 800px;
+    height: 500px;
+}
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
