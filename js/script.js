@@ -24,6 +24,11 @@ var svg = d3.select("#chart").append("svg")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
+// Define the axes
+var xAxis = d3.axisBottom(x);
+
+var yAxis = d3.axisLeft(y);
+
 // Get the data
 d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
 
@@ -40,31 +45,30 @@ d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
 
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.age; }));
-    y.domain([0, d3.max(data, function(d) {
-        return Math.max(d.national, d.global); })]);
+    y.domain([d3.min(data, function(d) {return Math.min(d.national, d.global); }), d3.max(data, function(d) {return Math.max(d.national, d.global); })]);
 
     // Add the valueline path.
     svg.append("path")
         .data([data])
-        .attr("class", "line")
+        .attr("class", "line global")
         .style("stroke", "#2f8fce")
         .attr("d", valueline);
 
     // Add the valueline2 path.
     svg.append("path")
         .data([data])
-        .attr("class", "line")
+        .attr("class", "line national")
         .style("stroke", "#c7432b")
         .attr("d", valueline2);
 
     // Add the X Axis
     svg.append("g")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+        .call(xAxis);
 
     // Add the Y Axis
     svg.append("g")
-        .call(d3.axisLeft(y));
+        .call(yAxis);
 
 });
 
@@ -73,24 +77,62 @@ let scenario = "2.6";
 
 function update () {
 
-    console.log(region);
-    console.log(scenario);
+    let file = "./new-data/" + region + "_" + scenario + ".csv";
+
+    console.log(file);
+
+    // Get the data
+    d3.csv(file, function(error, data) {
+
+        if (error) throw error;
+
+        // format the data
+        data.forEach(function(d) {
+            d.age = d.ages;
+            d.global = +d.global;
+            d.national = +d.national;
+        });
+        
+        console.log("data loaded");
+
+        // Scale the range of the data
+        x.domain(d3.extent(data, function(d) { return d.age; }));
+        y.domain([d3.min(data, function(d) {return Math.min(d.national, d.global); }), d3.max(data, function(d) {return Math.max(d.national, d.global); })]);
+
+        svg = d3.select("#chart").transition();
+
+        svg.select(".global")   // change the line
+            .duration(750)
+            .attr("d", valueline(data));
+        svg.select(".national")   // change the line
+            .duration(750)
+            .attr("d", valueline2(data));
+        svg.select(".x.axis") // change the x axis
+            .duration(750)
+            .call(xAxis);
+        svg.select(".y.axis") // change the y axis
+            .duration(750)
+            .call(yAxis);
+
+    });
 
 }
 
 document.getElementById('selectorRegion').addEventListener("change", function(e) {
-
     region = e.target.value;
-
     update(region);
-
 });
 
 
 document.getElementById('selectorScenario').addEventListener("change", function(e) {
-
     scenario = e.target.value;
-
     update(scenario);
-
 });
+
+// reset dropdown on window reload
+
+$(document).ready(function () {
+    $("select").each(function () {
+        $(this).val($(this).find('option[selected]').val());
+    });
+})
