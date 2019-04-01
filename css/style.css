@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans', Helvetica, Arial, Sans-serif;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(https://www.carbonbrief.org/wp-content/uploads/2018/04/arrow-for-map.png) 96% / 15% no-repeat #333333;
+    background-size: 20px 13px;
+    border:2px;
+    padding: 4px;
+    color: #f3f3f3;
+    outline:0px;
+}
+
+.selector {
+    width: 200px;
+}
