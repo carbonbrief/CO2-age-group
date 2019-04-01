@@ -9,6 +9,12 @@ body {
     height: 500px;
 }
 
+.line {
+    fill: none;
+    stroke-width: 2px;
+    stroke-linecap: round;
+}
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;

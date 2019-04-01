@@ -3,9 +3,6 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-// parse the date / time
-// var parseTime = d3.timeParse("%d-%b-%y");
-
 // set the ranges
 var x = d3.scaleLinear().range([0, width]);
 var y = d3.scaleLinear().range([height, 0]);
@@ -50,13 +47,14 @@ d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
     svg.append("path")
         .data([data])
         .attr("class", "line")
+        .style("stroke", "#2f8fce")
         .attr("d", valueline);
 
     // Add the valueline2 path.
     svg.append("path")
         .data([data])
         .attr("class", "line")
-        .style("stroke", "red")
+        .style("stroke", "#c7432b")
         .attr("d", valueline2);
 
     // Add the X Axis
@@ -69,3 +67,12 @@ d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
         .call(d3.axisLeft(y));
 
 });
+
+function update () {
+
+    console.log("change");
+
+}
+
+document.getElementById('selectorRegion').addEventListener("change", update);
+document.getElementById('selectorScenario').addEventListener("change", update);
