@@ -92,9 +92,6 @@ d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
 
 });
 
-let region = "United Kingdom";
-let scenario = "2.6";
-
 function update () {
 
     let file = "./new-data/" + region + "_" + scenario + ".csv";

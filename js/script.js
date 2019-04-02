@@ -1,18 +1,23 @@
 // populate age dropdown
 
 let selectAge = document.getElementsByClassName("selectorAge");
-let yearBorn = 1917;
+let selectRegion = document.getElementsByClassName("selectorRegion");
+let selectScenario = document.getElementsByClassName("selectorScenario");
+
+let year = 1917;
+let region = "United Kingdom";
+let scenario = "2.6";
 
 for (var i=0; i<101; ++i ) {
 
     let el = document.createElement("option");
-    el.textContent = yearBorn;
-    el.value = yearBorn;
+    el.textContent = year;
+    el.value = year;
     selectAge[0].appendChild(el);
 
     let el2 = document.createElement("option");
-    el2.textContent = yearBorn;
-    el2.value = yearBorn;
+    el2.textContent = year;
+    el2.value = year;
     selectAge[1].appendChild(el2);
 
     if (i == 100) {
@@ -20,7 +25,7 @@ for (var i=0; i<101; ++i ) {
     };
 
     // increase year each time
-    yearBorn++;
+    year++;
 }
 
 function onComplete() {  
@@ -30,20 +35,34 @@ function onComplete() {
 }
 
 function hideIntro () {
+
     $("#intro").fadeTo("fast", 0, moveBehind);
 
     function moveBehind () {
         $("#intro").css("z-index", "-99999");
     }
+
+    year = selectAge[1].options[selectAge[1].selectedIndex].value;
+    region = selectRegion[1].options[selectRegion[1].selectedIndex].value;
+    scenario = selectScenario[1].options[selectScenario[1].selectedIndex].value;
+    console.log(year + " " + region + " " + scenario);
+
+    // update other dropdowns
+    selectAge[0].value = year;
+    selectRegion[0].value = region;
+    selectScenario[0].value = scenario;
+
+    update();
+
 }
 
-document.getElementById('selectorRegion').addEventListener("change", function(e) {
+selectRegion[0].addEventListener("change", function(e) {
     region = e.target.value;
     update(region);
 });
 
 
-document.getElementById('selectorScenario').addEventListener("change", function(e) {
+selectScenario[0].addEventListener("change", function(e) {
     scenario = e.target.value;
     update(scenario);
 });
