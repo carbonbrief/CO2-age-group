@@ -1,6 +1,7 @@
 // populate age dropdown
 
-let selectAge = document.getElementById("selectorAge");
+let selectAge = document.getElementsByClassName("selectorAge");
+console.log(selectAge);
 let yearBorn = 1917;
 
 for (var i=0; i<101; ++i ) {
@@ -8,9 +9,24 @@ for (var i=0; i<101; ++i ) {
     let el = document.createElement("option");
     el.textContent = yearBorn;
     el.value = yearBorn;
-    selectAge.appendChild(el);
+    selectAge[0].appendChild(el);
+
+    let el2 = document.createElement("option");
+    el2.textContent = yearBorn;
+    el2.value = yearBorn;
+    selectAge[1].appendChild(el2);
+
+    if (i == 100) {
+        onComplete();
+    };
+
     // increase year each time
     yearBorn++;
+}
+
+function onComplete() {  
+    selectAge[0].getElementsByTagName('option')[63].setAttribute('selected', true);
+    selectAge[1].getElementsByTagName('option')[63].setAttribute('selected', true);
 }
 
 document.getElementById('selectorRegion').addEventListener("change", function(e) {

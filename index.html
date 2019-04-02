@@ -15,6 +15,8 @@
     <body>
         <h1>Chart title</h1>
         <div id="toolbar">
+            <select class="selectorAge selector">
+            </select>
             <select id='selectorRegion' class="selector">
                 <option value='AFRICA'>Africa</option>
                 <option value='ASIA' >Asia</option>
@@ -56,8 +58,7 @@
         <div id="intro">
             <div id="wrapper">
                 <h1>What's your lifetime carbon budget?</h1>
-                <select id="selectorAge" class="selector">
-
+                <select class="selectorAge selector">
                 </select>
                 <select class="selectorRegion selector">
                     <option value='AFRICA'>Africa</option>
@@ -94,6 +95,7 @@
                     <option value='1.9' >1.9</option>
                     <option value='2.6' selected='selected'>2.6</option>
                 </select>
+                <button>Go!</button>
             </div>
         </div>
         <script src="js/script.js"></script>
