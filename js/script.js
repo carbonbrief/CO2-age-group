@@ -30,7 +30,11 @@ function onComplete() {
 }
 
 function hideIntro () {
-    $("#intro").fadeTo("fast", 0);
+    $("#intro").fadeTo("fast", 0, moveBehind);
+
+    function moveBehind () {
+        $("#intro").css("z-index", "-99999");
+    }
 }
 
 document.getElementById('selectorRegion').addEventListener("change", function(e) {
