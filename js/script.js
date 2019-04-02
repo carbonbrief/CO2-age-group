@@ -31,7 +31,6 @@ function onComplete() {
 
 function hideIntro () {
     $("#intro").fadeTo("fast", 0);
-    console.log("hide intro");
 }
 
 document.getElementById('selectorRegion').addEventListener("change", function(e) {
