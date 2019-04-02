@@ -80,7 +80,7 @@ d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
         .attr("x",0 - (height / 2))
         .attr("dy", "1em")
         .style("text-anchor", "middle")
-        .text("Units");
+        .text("Tons of CO2");
 
     svg.append("text")
         .attr("class", "axis label")
