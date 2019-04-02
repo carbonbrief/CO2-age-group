@@ -139,6 +139,9 @@ function update () {
         svg.selectAll(".bar")
             .data(data)
             .transition()
+            .delay(function(d, i) {
+                return i * 2;
+            })
             .duration(750)
             .attr("d", d => `
                 M${x(d.age)},${y(d.national) + ry}
