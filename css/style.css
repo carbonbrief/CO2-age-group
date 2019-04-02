@@ -39,6 +39,10 @@ h1 {
     stroke-linecap: round;
 }
 
+.bar {
+    fill: #2f8fce;
+}
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;

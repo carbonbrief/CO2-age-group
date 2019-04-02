@@ -3,19 +3,21 @@ var margin = {top: 20, right: 20, bottom: 50, left: 50},
     width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
+let tickValues = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+
 // set the ranges
-var x = d3.scaleLinear().range([0, width]);
+var x = d3.scaleBand().range([0, width]).padding(0.1);
 var y = d3.scaleLinear().range([height, 0]);
 
-// define the 1st line
-var valueline = d3.line()
-    .x(function(d) { return x(d.age); })
-    .y(function(d) { return y(d.global); });
+// // define the 1st line
+// var valueline = d3.line()
+//     .x(function(d) { return x(d.age); })
+//     .y(function(d) { return y(d.global); });
 
-// define the 2nd line
-var valueline2 = d3.line()
-    .x(function(d) { return x(d.age); })
-    .y(function(d) { return y(d.national); });
+// // define the 2nd line
+// var valueline2 = d3.line()
+//     .x(function(d) { return x(d.age); })
+//     .y(function(d) { return y(d.national); });
 
 var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -25,7 +27,7 @@ var svg = d3.select("#chart").append("svg")
         "translate(" + margin.left + "," + margin.top + ")");
 
 // Define the axes
-var xAxis = d3.axisBottom(x);
+var xAxis = d3.axisBottom(x).tickValues(tickValues);
 
 var yAxis = d3.axisLeft(y);
 
@@ -44,23 +46,34 @@ d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
     console.log("data loaded");
 
     // Scale the range of the data
-    x.domain(d3.extent(data, function(d) { return d.age; }));
+    x.domain(data.map(function(d) { return d.age; }));
+    //x.domain(d3.extent(data, function(d) { return d.age; }));
     // y.domain([-100, d3.max(data, function(d) {return Math.max(d.national, d.global); })]);
     y.domain([-100, 1600]);
 
-    // Add the valueline path.
-    svg.append("path")
-        .data([data])
-        .attr("class", "line global")
-        .style("stroke", "#2f8fce")
-        .attr("d", valueline);
+    // // Add the valueline path.
+    // svg.append("path")
+    //     .data([data])
+    //     .attr("class", "line global")
+    //     .style("stroke", "#2f8fce")
+    //     .attr("d", valueline);
 
-    // Add the valueline2 path.
-    svg.append("path")
-        .data([data])
-        .attr("class", "line national")
-        .style("stroke", "#c7432b")
-        .attr("d", valueline2);
+    // // Add the valueline2 path.
+    // svg.append("path")
+    //     .data([data])
+    //     .attr("class", "line national")
+    //     .style("stroke", "#c7432b")
+    //     .attr("d", valueline2);
+
+    // append the rectangles for the bar chart
+    svg.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.age); })
+        .attr("width", x.bandwidth())
+        .attr("y", function(d) { return y(d.national); })
+        .attr("height", function(d) { return height - y(d.national); });
 
     // Add the X Axis
     svg.append("g")
@@ -113,18 +126,23 @@ function update () {
         console.log("data loaded");
 
         // Scale the range of the data
-        x.domain(d3.extent(data, function(d) { return d.age; }));
+        x.domain(data.map(function(d) { return d.age; }));
+        //x.domain(d3.extent(data, function(d) { return d.age; }));
         // y.domain([-100, d3.max(data, function(d) {return Math.max(d.national, d.global); })]);
         y.domain([-100, 1600]);
 
         svg = d3.select("#chart").transition();
 
-        svg.select(".global")   // change the line
+        // svg.select(".global")   // change the line
+        //     .duration(750)
+        //     .attr("d", valueline(data));
+        // svg.select(".national")   // change the line
+        //     .duration(750)
+        //     .attr("d", valueline2(data));
+        svg.selectAll(".bar")
             .duration(750)
-            .attr("d", valueline(data));
-        svg.select(".national")   // change the line
-            .duration(750)
-            .attr("d", valueline2(data));
+            .attr("y", function(d) { return y(d.national); })
+            .attr("height", function(d) { return height - y(d.national); });
         svg.select(".x.axis") // change the x axis
             .duration(750)
             .call(xAxis);

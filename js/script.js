@@ -1,5 +1,4 @@
-// populate age dropdown
-
+// create arrays for pairs of dropdowns
 let selectAge = document.getElementsByClassName("selectorAge");
 let selectRegion = document.getElementsByClassName("selectorRegion");
 let selectScenario = document.getElementsByClassName("selectorScenario");
@@ -8,6 +7,7 @@ let year = 1917;
 let region = "United Kingdom";
 let scenario = "2.6";
 
+// populate age dropdown programmatically
 for (var i=0; i<101; ++i ) {
 
     let el = document.createElement("option");
