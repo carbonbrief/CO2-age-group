@@ -1,7 +1,6 @@
 // populate age dropdown
 
 let selectAge = document.getElementsByClassName("selectorAge");
-console.log(selectAge);
 let yearBorn = 1917;
 
 for (var i=0; i<101; ++i ) {
@@ -28,6 +27,11 @@ function onComplete() {
     // set default selected year to 1980
     selectAge[0].getElementsByTagName('option')[63].setAttribute('selected', true);
     selectAge[1].getElementsByTagName('option')[63].setAttribute('selected', true);
+}
+
+function hideIntro () {
+    $("#intro").fadeTo("fast", 0);
+    console.log("hide intro");
 }
 
 document.getElementById('selectorRegion').addEventListener("change", function(e) {
