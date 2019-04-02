@@ -25,6 +25,7 @@ for (var i=0; i<101; ++i ) {
 }
 
 function onComplete() {  
+    // set default selected year to 1980
     selectAge[0].getElementsByTagName('option')[63].setAttribute('selected', true);
     selectAge[1].getElementsByTagName('option')[63].setAttribute('selected', true);
 }
