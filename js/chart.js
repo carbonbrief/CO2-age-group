@@ -18,7 +18,6 @@ var svg = d3.select("#chart").append("svg")
 
 // Define the axes
 var xAxis = d3.axisBottom(x).tickValues(tickValues);
-
 var yAxis = d3.axisLeft(y);
 
 const rx = 2;
@@ -35,28 +34,10 @@ d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
         d.global = +d.global;
         d.national = +d.national;
     });
-    
-    console.log("data loaded");
 
     // Scale the range of the data
     x.domain(data.map(function(d) { return d.age; }));
-    //x.domain(d3.extent(data, function(d) { return d.age; }));
-    // y.domain([-100, d3.max(data, function(d) {return Math.max(d.national, d.global); })]);
     y.domain([-100, 1600]);
-
-    // // Add the valueline path.
-    // svg.append("path")
-    //     .data([data])
-    //     .attr("class", "line global")
-    //     .style("stroke", "#2f8fce")
-    //     .attr("d", valueline);
-
-    // // Add the valueline2 path.
-    // svg.append("path")
-    //     .data([data])
-    //     .attr("class", "line national")
-    //     .style("stroke", "#c7432b")
-    //     .attr("d", valueline2);
 
     // append the rectangles for the bar chart
     svg.selectAll(".bar")
@@ -124,18 +105,8 @@ function update () {
 
         // Scale the range of the data
         x.domain(data.map(function(d) { return d.age; }));
-        //x.domain(d3.extent(data, function(d) { return d.age; }));
-        // y.domain([-100, d3.max(data, function(d) {return Math.max(d.national, d.global); })]);
         y.domain([-100, 1600]);
 
-        //svg = d3.select("#chart").transition();
-
-        // svg.select(".global")   // change the line
-        //     .duration(750)
-        //     .attr("d", valueline(data));
-        // svg.select(".national")   // change the line
-        //     .duration(750)
-        //     .attr("d", valueline2(data));
         svg.selectAll(".bar")
             .data(data)
             .transition()
@@ -151,14 +122,20 @@ function update () {
                 v${height - y(d.national) - ry}
                 h${-(x.bandwidth())}Z
             `);
-        svg.select(".x.axis") // change the x axis
-            .transition()
-            .duration(750)
-            .call(xAxis);
-        svg.select(".y.axis") // change the y axis
-            .transition()
-            .duration(750)
-            .call(yAxis);
+
+        svg.selectAll(".bar")
+            .style("opacity", 0.4)
+            .filter(function(d) { return d.age == age; })
+            .style("opacity", 1);
+
+        // svg.select(".x.axis") // change the x axis
+        //     .transition()
+        //     .duration(750)
+        //     .call(xAxis);
+        // svg.select(".y.axis") // change the y axis
+        //     .transition()
+        //     .duration(750)
+        //     .call(yAxis);
 
     });
 

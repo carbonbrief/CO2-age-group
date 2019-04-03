@@ -41,6 +41,7 @@ h1 {
 
 .bar {
     fill: #2f8fce;
+    opacity: 0.4;
 }
 
 select {

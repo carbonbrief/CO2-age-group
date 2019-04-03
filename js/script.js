@@ -3,7 +3,7 @@ let selectAge = document.getElementsByClassName("selectorAge");
 let selectRegion = document.getElementsByClassName("selectorRegion");
 let selectScenario = document.getElementsByClassName("selectorScenario");
 
-let year = 1917;
+let age = 0;
 let region = "United Kingdom";
 let scenario = "2.6";
 
@@ -11,25 +11,25 @@ let scenario = "2.6";
 for (var i=0; i<101; ++i ) {
 
     let el = document.createElement("option");
-    el.textContent = year;
-    el.value = year;
+    el.textContent = age;
+    el.value = age;
     selectAge[0].appendChild(el);
 
     let el2 = document.createElement("option");
-    el2.textContent = year;
-    el2.value = year;
+    el2.textContent = age;
+    el2.value = age;
     selectAge[1].appendChild(el2);
 
     if (i == 100) {
         onComplete();
     };
 
-    // increase year each time
-    year++;
+    // increase age each time
+    age++;
 }
 
 function onComplete() {  
-    // set default selected year to 1980
+    // set default selected age to 1980
     selectAge[0].getElementsByTagName('option')[63].setAttribute('selected', true);
     selectAge[1].getElementsByTagName('option')[63].setAttribute('selected', true);
 }
@@ -42,13 +42,13 @@ function hideIntro () {
         $("#intro").css("z-index", "-99999");
     }
 
-    year = selectAge[1].options[selectAge[1].selectedIndex].value;
+    age = selectAge[1].options[selectAge[1].selectedIndex].value;
     region = selectRegion[1].options[selectRegion[1].selectedIndex].value;
     scenario = selectScenario[1].options[selectScenario[1].selectedIndex].value;
-    console.log(year + " " + region + " " + scenario);
+    console.log(age + " " + region + " " + scenario);
 
     // update other dropdowns
-    selectAge[0].value = year;
+    selectAge[0].value = age;
     selectRegion[0].value = region;
     selectScenario[0].value = scenario;
 
@@ -65,6 +65,11 @@ selectRegion[0].addEventListener("change", function(e) {
 selectScenario[0].addEventListener("change", function(e) {
     scenario = e.target.value;
     update(scenario);
+});
+
+selectAge[0].addEventListener("change", function(e) {
+    age = e.target.value;
+    update(age);
 });
 
 // reset dropdown on window reload
