@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 20, bottom: 50, left: 50},
+var margin = {top: 20, right: 10, bottom: 50, left: 50},
     width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
     height = 450 - margin.top - margin.bottom;
 

@@ -93,11 +93,8 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: url(https://www.carbonbrief.org/wp-content/uploads/2018/04/arrow-for-map.png) 96% / 15% no-repeat #333333;
-    background-size: 20px 13px;
     border:2px;
     padding: 4px;
-    color: #f3f3f3;
     outline:0px;
 }
 
@@ -105,6 +102,8 @@ select {
     width: 200px;
     margin-bottom: 15px;
 }
+
+
 
 .selector2 {
     width: 300px;
@@ -116,6 +115,37 @@ select.selector2 {
     border:2px;
     padding: 6px;
     margin-bottom: 15px;
+    background: url(https://www.carbonbrief.org/wp-content/uploads/2018/04/arrow-for-map.png) 96% / 15% no-repeat #333333;
+    background-size: 20px 13px;
+    color: #f3f3f3;
+}
+
+select.selector {
+    background: #f3f3f3;
+    color: #333333;
+}
+
+/* add arrow */
+
+label {position:relative}
+label:after {
+    content:"\f078";   
+    font-family: "FontAwesome";
+    font-size: 11px;
+    color:#333333;
+    right:8px; top:4px;
+    padding:0 0 2px;
+    position:absolute;
+    pointer-events:none;
+}
+label:before {
+    content:'';
+    right:4px; top:0px;
+    width:23px; height:18px;
+    background:#f3f3f3;
+    position:absolute;
+    pointer-events:none;
+    display:block;
 }
 
 button {
@@ -224,4 +254,8 @@ div.tooltip p {
 
 .inline {
     display: inline;
+}
+
+.axis {
+    font-size: 12.5px;
 }
