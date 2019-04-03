@@ -5,7 +5,7 @@
         <title>xxx</title>
         <meta name="description" content="xxx">
         <meta name="author" content="Rosamund Pearce and Zeke Hausfather">
-        <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Sans:400,700|PT+Serif" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700|PT+Sans:400,400i,700,700i|PT+Serif:400,400i,700,700i" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -15,7 +15,10 @@
     <body>
         <div class="row">
             <div class="column large">
-                <h1>Chart title</h1>
+                <p>Your lifetime carbon budget for limiting global warming to 1.5C is</p>
+                <h2><span>XXXX</span> tons of CO2</h2>
+                <p>Based on energy models for your country</p>
+                <p>This is <span>XY%</span> the size of the lifetime budget for someone born in 1950.</p>
             </div>
             <div class="column small">
                 <div id="toolbar">
@@ -52,8 +55,8 @@
                         <option value='Viet Nam' >Vietnam</option>
                     </select>
                     <select class="selectorEmissions selector">
-                        <option value='national' >Based on energy models for your country</option>
-                        <option value='global' selected='selected'>Dividing remaining emissions equally for everyone on earth</option>
+                        <option value='national' selected='selected'>National emissions scenario</option>
+                        <option value='global'>Equal global emissions</option>
                     </select>
                 </div>
             </div>
