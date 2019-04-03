@@ -83,8 +83,16 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
             .duration(200)
             .style("stroke-width", 1);
 
+           function string () {
+                if (d.age == 1) {
+                    return "year old"
+                } else {
+                    return  "years old"
+                }
+            }
+
             div.html(
-                "<p><b>Age: </b>" + d.age + "</p>" +
+                "<h4>" + d.age + " " + string() + "</h4>" +
                 "<p><div class='tooltip-key' style='background-color: #439AD2;'></div><p class='inline'><b>1.5C allowance: </b></p></p>" + 
                 "<p>" + decimalFormat(d.onepointfive) + " tons of CO2</p>" +
                 "<p><div class='tooltip-key' style='background-color: #CC5540;'></div><p class='inline'><b>2C allowance: </b></p></p>" +

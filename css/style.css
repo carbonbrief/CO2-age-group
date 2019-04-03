@@ -149,6 +149,16 @@ div.tooltip {
     z-index: 999999;
 }
 
+div.tooltip h4 {
+    font-family: "PT Sans Narrow", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-top: 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #333333;
+    margin-bottom: 5px;
+}
+
 .tooltip-key {
     width: 8px;
     height: 8px;
