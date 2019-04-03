@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
 var margin = {top: 20, right: 20, bottom: 50, left: 50},
     width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    height = 450 - margin.top - margin.bottom;
 
 let tickValues = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 

@@ -13,62 +13,65 @@
     </head>
 
     <body>
-        <h1>Chart title</h1>
-        <div id="toolbar">
-            <select class="selectorAge selector">
-            </select>
-            <select class="selectorRegion selector">
-                <option value='AFRICA'>Africa</option>
-                <option value='ASIA' >Asia</option>
-                <option value='EUROPE' >Europe</option>
-                <option value='LATIN AMERICA AND THE CARIBBEAN' >Latin American and the Caribbean</option>
-                <option value='OCEANIA' >Oceania</option>
-
-                <option value='Argentina' >Argentina</option>
-                <option value='Australia' >Australia</option>
-                <option value='Bangladesh' >Bangladesh</option>
-                <option value='Brazil' >Brazil</option>
-                <option value='Canada' >Canada</option>
-                <option value='China' >China</option>
-                <option value='Egypt' >Egypt</option>
-                <option value='Ethiopia' >Ethiopia</option>
-                <option value='France' >France</option>
-                <option value='Germany' >Germany</option>
-                <option value='India' >India</option>
-                <option value='Indonesia' >Indonesia</option>
-                <option value='Italy' >Italy</option>
-                <option value='Japan' >Japan</option>
-                <option value='Mexico' >Mexico</option>
-                <option value='Nigeria' >Nigeria</option>
-                <option value='Pakistan' >Pakistan</option>
-                <option value='Philippines' >Philippines</option>
-                <option value='Russian Federation' >Russia</option>
-                <option value='Spain' >Spain</option>
-                <option value='United Kingdom' selected='selected'>United Kingdom</option>
-                <option value='United States of America' >United States</option>
-                <option value='Viet Nam' >Vietnam</option>
-            </select>
-            <!-- <select class="selectorScenario selector">
-                <option value='1.9' >Limiting warming to 1.5C</option>
-                <option value='2.6' selected='selected'>Limiting warming to 2C</option>
-            </select> -->
-            <select class="selectorEmissions selector">
-                <option value='national' >Based on energy models for your country</option>
-                <option value='global' selected='selected'>Dividing remaining emissions equally for everyone on earth</option>
-            </select>
+        <div class="row">
+            <div class="column large">
+                <h1>Chart title</h1>
+            </div>
+            <div class="column small">
+                <div id="toolbar">
+                    <select class="selectorAge selector">
+                    </select>
+                    <select class="selectorRegion selector">
+                        <option value='AFRICA'>Africa</option>
+                        <option value='ASIA' >Asia</option>
+                        <option value='EUROPE' >Europe</option>
+                        <option value='LATIN AMERICA AND THE CARIBBEAN' >Latin American and the Caribbean</option>
+                        <option value='OCEANIA' >Oceania</option>
+                        <option value='Argentina' >Argentina</option>
+                        <option value='Australia' >Australia</option>
+                        <option value='Bangladesh' >Bangladesh</option>
+                        <option value='Brazil' >Brazil</option>
+                        <option value='Canada' >Canada</option>
+                        <option value='China' >China</option>
+                        <option value='Egypt' >Egypt</option>
+                        <option value='Ethiopia' >Ethiopia</option>
+                        <option value='France' >France</option>
+                        <option value='Germany' >Germany</option>
+                        <option value='India' >India</option>
+                        <option value='Indonesia' >Indonesia</option>
+                        <option value='Italy' >Italy</option>
+                        <option value='Japan' >Japan</option>
+                        <option value='Mexico' >Mexico</option>
+                        <option value='Nigeria' >Nigeria</option>
+                        <option value='Pakistan' >Pakistan</option>
+                        <option value='Philippines' >Philippines</option>
+                        <option value='Russian Federation' >Russia</option>
+                        <option value='Spain' >Spain</option>
+                        <option value='United Kingdom' selected='selected'>United Kingdom</option>
+                        <option value='United States of America' >United States</option>
+                        <option value='Viet Nam' >Vietnam</option>
+                    </select>
+                    <select class="selectorEmissions selector">
+                        <option value='national' >Based on energy models for your country</option>
+                        <option value='global' selected='selected'>Dividing remaining emissions equally for everyone on earth</option>
+                    </select>
+                </div>
+            </div>
         </div>
-        <div id="chart">
-            <div id="key">
-                <ul id="list-group">
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #439AD2;"></div>
-                        Limiting warming to 1.5C
-                    </li>
-                    <li class="list-group-item">
-                        <div class="colour-key" style="background-color: #CC5540;"></div>
-                        Additional budget for 2C
-                    </li>
-                </ul>
+        <div class="row">
+            <div id="chart">
+                <div id="key">
+                    <ul id="list-group">
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #439AD2;"></div>
+                            Limiting warming to 1.5C
+                        </li>
+                        <li class="list-group-item">
+                            <div class="colour-key" style="background-color: #CC5540;"></div>
+                            Additional budget for 2C
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div id="intro">
@@ -109,11 +112,6 @@
                     <option value='United States of America' >United States</option>
                     <option value='Viet Nam' >Viet Nam</option>
                 </select>
-                <!-- <h3>Climate target</h3> -->
-                <!-- <select class="selectorScenario selector2">
-                    <option value='1.9' >Limiting warming to 1.5C</option>
-                    <option value='2.6' selected='selected'>Limiting warming to 2C</option>
-                </select> -->
                 <button onclick="hideIntro();">Go!</button>
             </div>
         </div>
