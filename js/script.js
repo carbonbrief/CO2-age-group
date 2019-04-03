@@ -2,10 +2,12 @@
 let selectAge = document.getElementsByClassName("selectorAge");
 let selectRegion = document.getElementsByClassName("selectorRegion");
 let selectScenario = document.getElementsByClassName("selectorScenario");
+let selectEmissions = document.getElementsByClassName("selectorEmissions");
 
 let age = 0;
 let region = "United Kingdom";
 let scenario = "2.6";
+let emissions = "national";
 
 // populate age dropdown programmatically
 for (var i=0; i<101; ++i ) {
@@ -70,6 +72,11 @@ selectScenario[0].addEventListener("change", function(e) {
 selectAge[0].addEventListener("change", function(e) {
     age = e.target.value;
     update(age);
+});
+
+selectEmissions[0].addEventListener("change", function(e) {
+    emissions = e.target.value;
+    update(emissions);
 });
 
 // reset dropdown on window reload

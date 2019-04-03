@@ -115,11 +115,11 @@ function update () {
             })
             .duration(750)
             .attr("d", d => `
-                M${x(d.age)},${y(d.national) + ry}
+                M${x(d.age)},${y(d[emissions]) + ry}
                 a${rx},${ry} 0 0 1 ${rx},${-ry}
                 h${x.bandwidth() - 2 * rx}
                 a${rx},${ry} 0 0 1 ${rx},${ry}
-                v${height - y(d.national) - ry}
+                v${height - y(d[emissions]) - ry}
                 h${-(x.bandwidth())}Z
             `);
 
