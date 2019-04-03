@@ -13,7 +13,8 @@ h1 {
 
 #chart {
     max-width: 800px;
-    height: 500px;
+    height: 460px;
+    position: relative;
 }
 
 #intro {
@@ -108,6 +109,12 @@ button:focus {
 
 button:active {
     transform: scale(0.99);
+}
+
+#key {
+    position: absolute;
+    top: 10px;
+    left: 65px;
 }
 
 .colour-key {

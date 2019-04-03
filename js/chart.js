@@ -79,11 +79,11 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
         function mouseover (d) {
 
             d3.select(this)
-            .transition()
+            .transition("show stroke")
             .duration(200)
             .style("stroke-width", 1);
 
-           function string () {
+            function string () {
                 if (d.age == 1) {
                     return "year old"
                 } else {
@@ -101,7 +101,7 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
             .style("left", (d3.event.pageX + 10) + "px")
             .style("top", (d3.event.pageY - 20) + "px");
 
-            div.transition()
+            div.transition("show div")
             .duration(100)
             .style("opacity", .9);
     
@@ -109,11 +109,11 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
         
         function mouseout () {
             d3.select(this)
-            .transition()
+            .transition("hide stroke")
             .duration(200)
             .style("stroke-width", "0px");
             // hide tooltip
-            div.transition()
+            div.transition("hide div")
             .duration(100)
             .style("opacity", 0);
         }  
@@ -175,7 +175,7 @@ function update () {
 
         svg.selectAll(".bar1")
             .data(data)
-            .transition()
+            .transition("data update bar 1")
             .delay(function(d, i) {
                 return i * 2;
             })
@@ -189,25 +189,25 @@ function update () {
                 h${-(x.bandwidth())}Z
             `);
 
-        svg.selectAll(".bar3")
-            .data(data)
-            .transition()
-            .delay(function(d, i) {
-                return i * 2;
-            })
-            .duration(750)
-            .attr("d", d => `
-                M${x(d.age)},${y(d.two) + ry}
-                a${rx},${ry} 0 0 1 ${rx},${-ry}
-                h${x.bandwidth() - 2 * rx}
-                a${rx},${ry} 0 0 1 ${rx},${ry}
-                v${height - y(d.two) - ry}
-                h${-(x.bandwidth())}Z
-            `);
+        // svg.selectAll(".bar3")
+        //     .data(data)
+        //     .transition()
+        //     .delay(function(d, i) {
+        //         return i * 2;
+        //     })
+        //     .duration(750)
+        //     .attr("d", d => `
+        //         M${x(d.age)},${y(d.two) + ry}
+        //         a${rx},${ry} 0 0 1 ${rx},${-ry}
+        //         h${x.bandwidth() - 2 * rx}
+        //         a${rx},${ry} 0 0 1 ${rx},${ry}
+        //         v${height - y(d.two) - ry}
+        //         h${-(x.bandwidth())}Z
+        //     `);
 
         svg.selectAll(".bar2")
             .data(data)
-            .transition()
+            .transition("data update bar 2")
             .delay(function(d, i) {
                 return i * 2;
             })
