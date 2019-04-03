@@ -24,6 +24,7 @@ var svg = d3.select("#chart").append("svg")
 var xAxis = d3.axisBottom(x).tickValues(tickValues);
 var yAxis = d3.axisLeft(y);
 
+const decimalFormat = d3.format(".1f");
 const rx = 2.5;
 const ry = 2.5;
 
@@ -83,9 +84,11 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
             .style("stroke-width", 1);
 
             div.html(
-                "<p><b>Age:</b>" + d.age + "</p>" +
-                "<p><div class='tooltip-key' style='background-color: #2f8fce;'></div><p class='inline'>" + d.onepointfive + "</p></p>" +
-                "<p><div class='tooltip-key' style='background-color: #c7432b;'></div><p class='inline'>" + d.two + "</p></p>"
+                "<p><b>Age: </b>" + d.age + "</p>" +
+                "<p><div class='tooltip-key' style='background-color: #439AD2;'></div><p class='inline'><b>1.5C allowance: </b></p></p>" + 
+                "<p>" + decimalFormat(d.onepointfive) + " tons of CO2</p>" +
+                "<p><div class='tooltip-key' style='background-color: #CC5540;'></div><p class='inline'><b>2C allowance: </b></p></p>" +
+                "<p>" + decimalFormat(d.two) + " tons of CO2</p>"
             )
             .style("left", (d3.event.pageX + 10) + "px")
             .style("top", (d3.event.pageY - 20) + "px");
