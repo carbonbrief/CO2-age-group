@@ -5,6 +5,10 @@ var margin = {top: 20, right: 20, bottom: 50, left: 50},
 
 let tickValues = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
 // set the ranges
 var x = d3.scaleBand().range([0, width]).padding(0.1);
 var y = d3.scaleLinear().range([height, 0]);
@@ -53,7 +57,6 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
             h${-(x.bandwidth())}Z
             `)
         .on("mouseover", mouseover)
-        // .on("mousemove", mousemove)
         .on("mouseout", mouseout);
 
     // append the rectangles for 1.5C
@@ -70,43 +73,38 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
             h${-(x.bandwidth())}Z
             `)
         .on("mouseover", mouseover)
-        // .on("mousemove", mousemove)
         .on("mouseout", mouseout);
 
-        function mouseover () {
+        function mouseover (d) {
 
             d3.select(this)
             .transition()
             .duration(200)
             .style("stroke-width", 1);
-            // show tooltip
-            // div.transition()
-            // .duration(100)
-            // .style("opacity", .9);
+
+            div.html(
+                "<p><b>Age:</b>" + d.age + "</p>" +
+                "<p><div class='tooltip-key' style='background-color: #2f8fce;'></div><p class='inline'>" + d.onepointfive + "</p></p>" +
+                "<p><div class='tooltip-key' style='background-color: #c7432b;'></div><p class='inline'>" + d.two + "</p></p>"
+            )
+            .style("left", (d3.event.pageX + 10) + "px")
+            .style("top", (d3.event.pageY - 20) + "px");
+
+            div.transition()
+            .duration(100)
+            .style("opacity", .9);
     
         }
-    
-        // function mousemove (d) {
-    
-        //     // let color = d3.select(this).style('fill');
-    
-        //     // div.html(
-        //     //     "<div class='tooltip-key' style='background-color: " + color  + ";'></div><p class='inline'>" + ((d[1]) - (d[0])) + "%</p>"
-        //     // )
-        //     // .style("left", (d3.event.pageX + 10) + "px")
-        //     // .style("top", (d3.event.pageY - 20) + "px");
-    
-        // }
         
-        function mouseout (d) {
+        function mouseout () {
             d3.select(this)
             .transition()
             .duration(200)
             .style("stroke-width", "0px");
             // hide tooltip
-            // div.transition()
-            // .duration(100)
-            // .style("opacity", 0);
+            div.transition()
+            .duration(100)
+            .style("opacity", 0);
         }  
 
 
