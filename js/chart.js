@@ -51,21 +51,64 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
             a${rx},${ry} 0 0 1 ${rx},${ry}
             v${height - y(d.two) - ry}
             h${-(x.bandwidth())}Z
-            `);
+            `)
+        .on("mouseover", mouseover)
+        // .on("mousemove", mousemove)
+        .on("mouseout", mouseout);
 
-        // append the rectangles for 1.5C
-        svg.selectAll(".bar2")
-            .data(data)
-            .enter().append("path")
-            .attr("class", "bar2")
-            .attr("d", d => `
-                M${x(d.age)},${y(d.onepointfive) + ry}
-                a${rx},${ry} 0 0 1 ${rx},${-ry}
-                h${x.bandwidth() - 2 * rx}
-                a${rx},${ry} 0 0 1 ${rx},${ry}
-                v${height - y(d.onepointfive) - ry}
-                h${-(x.bandwidth())}Z
-                `);
+    // append the rectangles for 1.5C
+    svg.selectAll(".bar2")
+        .data(data)
+        .enter().append("path")
+        .attr("class", "bar2")
+        .attr("d", d => `
+            M${x(d.age)},${y(d.onepointfive) + ry}
+            a${rx},${ry} 0 0 1 ${rx},${-ry}
+            h${x.bandwidth() - 2 * rx}
+            a${rx},${ry} 0 0 1 ${rx},${ry}
+            v${height - y(d.onepointfive) - ry}
+            h${-(x.bandwidth())}Z
+            `)
+        .on("mouseover", mouseover)
+        // .on("mousemove", mousemove)
+        .on("mouseout", mouseout);
+
+        function mouseover () {
+
+            d3.select(this)
+            .transition()
+            .duration(200)
+            .style("stroke-width", 1);
+            // show tooltip
+            // div.transition()
+            // .duration(100)
+            // .style("opacity", .9);
+    
+        }
+    
+        // function mousemove (d) {
+    
+        //     // let color = d3.select(this).style('fill');
+    
+        //     // div.html(
+        //     //     "<div class='tooltip-key' style='background-color: " + color  + ";'></div><p class='inline'>" + ((d[1]) - (d[0])) + "%</p>"
+        //     // )
+        //     // .style("left", (d3.event.pageX + 10) + "px")
+        //     // .style("top", (d3.event.pageY - 20) + "px");
+    
+        // }
+        
+        function mouseout (d) {
+            d3.select(this)
+            .transition()
+            .duration(200)
+            .style("stroke-width", "0px");
+            // hide tooltip
+            // div.transition()
+            // .duration(100)
+            // .style("opacity", 0);
+        }  
+
 
     // Add the X Axis
     svg.append("g")
@@ -137,6 +180,22 @@ function update () {
                 h${-(x.bandwidth())}Z
             `);
 
+        svg.selectAll(".bar3")
+            .data(data)
+            .transition()
+            .delay(function(d, i) {
+                return i * 2;
+            })
+            .duration(750)
+            .attr("d", d => `
+                M${x(d.age)},${y(d.two) + ry}
+                a${rx},${ry} 0 0 1 ${rx},${-ry}
+                h${x.bandwidth() - 2 * rx}
+                a${rx},${ry} 0 0 1 ${rx},${ry}
+                v${height - y(d.two) - ry}
+                h${-(x.bandwidth())}Z
+            `);
+
         svg.selectAll(".bar2")
             .data(data)
             .transition()
@@ -154,14 +213,19 @@ function update () {
             `);
 
         svg.selectAll(".bar1")
-            .style("fill", "#E8B3AA")
+            .style("fill", "#E3A195")
             .filter(function(d) { return d.age == age; })
             .style("fill", "#CC5540");
 
         svg.selectAll(".bar2")
-            .style("fill", "#ABD2EB")
+            .style("fill", "#97C7E6")
             .filter(function(d) { return d.age == age; })
             .style("fill", "#439AD2");
+
+        // svg.selectAll(".bar3")
+        //     .style("opacity", 0)
+        //     .filter(function(d) { return d.age == age; })
+        //     .style("opacity", "0.2");
 
         // svg.select(".x.axis") // change the x axis
         //     .transition()

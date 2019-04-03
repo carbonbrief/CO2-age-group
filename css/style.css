@@ -40,11 +40,15 @@ h1 {
 }
 
 .bar1 {
-    fill: #E8B3AA;
+    fill: #E3A195;
+    stroke: #c7432b;
+    stroke-width: 0;
 }
 
 .bar2 {
-    fill: #ABD2EB;
+    fill: #97C7E6;
+    stroke: #2f8fce;
+    stroke-width: 0;
 }
 
 select {
