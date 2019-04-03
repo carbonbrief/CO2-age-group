@@ -39,9 +39,12 @@ h1 {
     stroke-linecap: round;
 }
 
-.bar {
-    fill: #2f8fce;
-    opacity: 0.4;
+.bar1 {
+    fill: #E8B3AA;
+}
+
+.bar2 {
+    fill: #ABD2EB;
 }
 
 select {

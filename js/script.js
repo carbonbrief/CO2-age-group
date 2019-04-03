@@ -1,12 +1,12 @@
 // create arrays for pairs of dropdowns
 let selectAge = document.getElementsByClassName("selectorAge");
 let selectRegion = document.getElementsByClassName("selectorRegion");
-let selectScenario = document.getElementsByClassName("selectorScenario");
+//let selectScenario = document.getElementsByClassName("selectorScenario");
 let selectEmissions = document.getElementsByClassName("selectorEmissions");
 
 let age = 0;
 let region = "United Kingdom";
-let scenario = "2.6";
+//let scenario = "2.6";
 let emissions = "national";
 
 // populate age dropdown programmatically
@@ -46,13 +46,13 @@ function hideIntro () {
 
     age = selectAge[1].options[selectAge[1].selectedIndex].value;
     region = selectRegion[1].options[selectRegion[1].selectedIndex].value;
-    scenario = selectScenario[1].options[selectScenario[1].selectedIndex].value;
-    console.log(age + " " + region + " " + scenario);
+    //scenario = selectScenario[1].options[selectScenario[1].selectedIndex].value;
+    console.log(age + " " + region);
 
     // update other dropdowns
     selectAge[0].value = age;
     selectRegion[0].value = region;
-    selectScenario[0].value = scenario;
+    //selectScenario[0].value = scenario;
 
     update();
 
@@ -64,10 +64,10 @@ selectRegion[0].addEventListener("change", function(e) {
 });
 
 
-selectScenario[0].addEventListener("change", function(e) {
-    scenario = e.target.value;
-    update(scenario);
-});
+// selectScenario[0].addEventListener("change", function(e) {
+//     scenario = e.target.value;
+//     update(scenario);
+// });
 
 selectAge[0].addEventListener("change", function(e) {
     age = e.target.value;

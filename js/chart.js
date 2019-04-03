@@ -20,38 +20,52 @@ var svg = d3.select("#chart").append("svg")
 var xAxis = d3.axisBottom(x).tickValues(tickValues);
 var yAxis = d3.axisLeft(y);
 
-const rx = 2;
-const ry = 2;
+const rx = 2.5;
+const ry = 2.5;
 
 // Get the data
-d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
+d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
 
     if (error) throw error;
 
     // format the data
     data.forEach(function(d) {
         d.age = d.ages;
-        d.global = +d.global;
-        d.national = +d.national;
+        d.onepointfive = +d["1.5C"];
+        d.two = +d["2C"];
     });
 
     // Scale the range of the data
     x.domain(data.map(function(d) { return d.age; }));
     y.domain([-100, 1600]);
 
-    // append the rectangles for the bar chart
-    svg.selectAll(".bar")
+    // append the rectangles for 2C
+    svg.selectAll(".bar1")
         .data(data)
         .enter().append("path")
-        .attr("class", "bar")
+        .attr("class", "bar1")
         .attr("d", d => `
-            M${x(d.age)},${y(d.national) + ry}
+            M${x(d.age)},${y(d.two) + ry}
             a${rx},${ry} 0 0 1 ${rx},${-ry}
             h${x.bandwidth() - 2 * rx}
             a${rx},${ry} 0 0 1 ${rx},${ry}
-            v${height - y(d.national) - ry}
+            v${height - y(d.two) - ry}
             h${-(x.bandwidth())}Z
             `);
+
+        // append the rectangles for 1.5C
+        svg.selectAll(".bar2")
+            .data(data)
+            .enter().append("path")
+            .attr("class", "bar2")
+            .attr("d", d => `
+                M${x(d.age)},${y(d.onepointfive) + ry}
+                a${rx},${ry} 0 0 1 ${rx},${-ry}
+                h${x.bandwidth() - 2 * rx}
+                a${rx},${ry} 0 0 1 ${rx},${ry}
+                v${height - y(d.onepointfive) - ry}
+                h${-(x.bandwidth())}Z
+                `);
 
     // Add the X Axis
     svg.append("g")
@@ -85,7 +99,7 @@ d3.csv("./new-data/United Kingdom_2.6.csv", function(error, data) {
 
 function update () {
 
-    let file = "./new-data/" + region + "_" + scenario + ".csv";
+    let file = "./new-data2/" + region + "_" + emissions + ".csv";
 
     console.log(file);
 
@@ -97,8 +111,8 @@ function update () {
         // format the data
         data.forEach(function(d) {
             d.age = d.ages;
-            d.global = +d.global;
-            d.national = +d.national;
+            d.onepointfive = +d["1.5C"];
+            d.two = +d["2C"];
         });
         
         console.log("data loaded");
@@ -107,7 +121,7 @@ function update () {
         x.domain(data.map(function(d) { return d.age; }));
         y.domain([-100, 1600]);
 
-        svg.selectAll(".bar")
+        svg.selectAll(".bar1")
             .data(data)
             .transition()
             .delay(function(d, i) {
@@ -115,18 +129,39 @@ function update () {
             })
             .duration(750)
             .attr("d", d => `
-                M${x(d.age)},${y(d[emissions]) + ry}
+                M${x(d.age)},${y(d.two) + ry}
                 a${rx},${ry} 0 0 1 ${rx},${-ry}
                 h${x.bandwidth() - 2 * rx}
                 a${rx},${ry} 0 0 1 ${rx},${ry}
-                v${height - y(d[emissions]) - ry}
+                v${height - y(d.two) - ry}
                 h${-(x.bandwidth())}Z
             `);
 
-        svg.selectAll(".bar")
-            .style("opacity", 0.4)
+        svg.selectAll(".bar2")
+            .data(data)
+            .transition()
+            .delay(function(d, i) {
+                return i * 2;
+            })
+            .duration(750)
+            .attr("d", d => `
+                M${x(d.age)},${y(d.onepointfive) + ry}
+                a${rx},${ry} 0 0 1 ${rx},${-ry}
+                h${x.bandwidth() - 2 * rx}
+                a${rx},${ry} 0 0 1 ${rx},${ry}
+                v${height - y(d.onepointfive) - ry}
+                h${-(x.bandwidth())}Z
+            `);
+
+        svg.selectAll(".bar1")
+            .style("fill", "#E8B3AA")
             .filter(function(d) { return d.age == age; })
-            .style("opacity", 1);
+            .style("fill", "#CC5540");
+
+        svg.selectAll(".bar2")
+            .style("fill", "#ABD2EB")
+            .filter(function(d) { return d.age == age; })
+            .style("fill", "#439AD2");
 
         // svg.select(".x.axis") // change the x axis
         //     .transition()
