@@ -65,12 +65,14 @@ h2 {
     -webkit-flex: 2 0 0;
     flex: 2 0 0;
     margin-left: 50px;
+    margin-right: 50px;
 }
 
 .small {
     -ms-flex: 1 0 0;
     -webkit-flex: 1 0 0;
     flex: 1 0 0;
+    position: relative;
 }
 
 #chart {
@@ -82,8 +84,9 @@ h2 {
 
 #toolbar {
     width: 200px;
-    margin-left: auto;
-    margin-right: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 #intro {
@@ -300,4 +303,16 @@ div.tooltip p {
 
 .axis text {
     fill: #333333;
+}
+
+#logo {
+    display: inline-block;
+    float: right;
+    height: 25px;
+    width: 30px;
+    background-image:url(../img/logo-mobile.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    visibility: visible;
+    opacity: 0.5;
 }
