@@ -115,6 +115,11 @@ h2 {
     stroke-width: 0;
 }
 
+.indicator {
+    stroke: #333333;
+    stroke-width: 1px;
+}
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -284,4 +289,8 @@ div.tooltip p {
 
 .axis {
     font-size: 12.5px;
+}
+
+.axis text {
+    fill: #333333;
 }

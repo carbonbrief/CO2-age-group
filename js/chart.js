@@ -173,6 +173,8 @@ function update () {
         x.domain(data.map(function(d) { return d.age; }));
         y.domain([-100, 1600]);
 
+        // ADD BARS
+
         svg.selectAll(".bar1")
             .data(data)
             .transition("data update bar 1")
@@ -206,7 +208,7 @@ function update () {
             `);
 
         // UPDATE UI TEXT
-        
+
         let budgetUser = d3.selectAll("placeholder")
         .data(data)
         .enter()
@@ -228,6 +230,38 @@ function update () {
 
         d3.selectAll("#budgetReference")
         .text(decimalFormat(referencePercent));
+
+        // ADD LINE HIGHLIGHT
+
+        let lineData = [
+            {
+                values: [
+                    {
+                        x: age,
+                        y: budgetUser
+                    },
+                    {
+                        x: age,
+                        y: 1700
+                    }
+                ]
+            }
+        ]
+
+        // define the line
+        let line = d3.line()
+        .curve(d3.curveLinear)
+        .x(function(d) { return x(d.x); })
+        .y(function(d) { return y(d.y); });
+
+        // draw the line
+
+        svg.selectAll('.indicator')
+        .data(lineData)
+        .enter()
+        .append('path')
+        .attr('class', 'indicator')  
+        .attr("d", function(d) { return line(d.values); });
 
         // HIGHLIGHT AGE
 

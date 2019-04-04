@@ -73,9 +73,9 @@ selectEmissions[0].addEventListener("change", function(e) {
     emissions = e.target.value;
     update(emissions);
     if (emissions == "national") {
-        $("#emissions").text("Based on energy models for your country.");
+        $("#emissions").text("Based on energy models for your country");
     } else {
-        $("#emissions").text("Dividing up remaining emissions equally for everyone on Earth.");
+        $("#emissions").text("Dividing up remaining emissions equally for everyone on Earth");
     }
 });
 
