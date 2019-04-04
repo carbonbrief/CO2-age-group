@@ -24,7 +24,7 @@ var svg = d3.select("#chart").append("svg")
 var xAxis = d3.axisBottom(x).tickValues(tickValues);
 var yAxis = d3.axisLeft(y);
 
-const decimalFormat = d3.format(".1f");
+const decimalFormat = d3.format(".0f");
 const rx = 2.5;
 const ry = 2.5;
 
@@ -189,22 +189,6 @@ function update () {
                 h${-(x.bandwidth())}Z
             `);
 
-        // svg.selectAll(".bar3")
-        //     .data(data)
-        //     .transition()
-        //     .delay(function(d, i) {
-        //         return i * 2;
-        //     })
-        //     .duration(750)
-        //     .attr("d", d => `
-        //         M${x(d.age)},${y(d.two) + ry}
-        //         a${rx},${ry} 0 0 1 ${rx},${-ry}
-        //         h${x.bandwidth() - 2 * rx}
-        //         a${rx},${ry} 0 0 1 ${rx},${ry}
-        //         v${height - y(d.two) - ry}
-        //         h${-(x.bandwidth())}Z
-        //     `);
-
         svg.selectAll(".bar2")
             .data(data)
             .transition("data update bar 2")
@@ -221,6 +205,40 @@ function update () {
                 h${-(x.bandwidth())}Z
             `);
 
+        // select nonexistent DOM elements in order to return variables that will use to update text
+        let budgetUser = d3.selectAll("placeholder")
+        .data(data)
+        .enter()
+        .filter(function(d) { return d.age == age; });
+
+        budgetUser = budgetUser.nodes()[0].__data__.onepointfive;
+
+        d3.selectAll("#budgetUser")
+        .text(decimalFormat(budgetUser));
+
+        console.log(budgetUser);
+
+        let budgetReference = d3.selectAll("placeholder")
+        .data(data)
+        .enter()
+        .filter(function(d) { return d.age == 67; });
+
+        budgetReference = budgetReference.nodes()[0].__data__.onepointfive;
+
+        let referencePercent = (budgetUser/budgetReference)*100;
+
+        console.log(budgetReference);
+
+        d3.selectAll("#budgetReference")
+        .text(decimalFormat(referencePercent));
+
+
+        // let budgetUser = budget;
+
+        // let budget
+
+        // console.log(budget.__data__.onepointfive);
+
         svg.selectAll(".bar1")
             .style("fill", "#E3A195")
             .filter(function(d) { return d.age == age; })
@@ -230,20 +248,6 @@ function update () {
             .style("fill", "#97C7E6")
             .filter(function(d) { return d.age == age; })
             .style("fill", "#439AD2");
-
-        // svg.selectAll(".bar3")
-        //     .style("opacity", 0)
-        //     .filter(function(d) { return d.age == age; })
-        //     .style("opacity", "0.2");
-
-        // svg.select(".x.axis") // change the x axis
-        //     .transition()
-        //     .duration(750)
-        //     .call(xAxis);
-        // svg.select(".y.axis") // change the y axis
-        //     .transition()
-        //     .duration(750)
-        //     .call(yAxis);
 
     });
 
