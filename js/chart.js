@@ -101,6 +101,12 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
 
     function mouseover (d) {
 
+        // to help deal with bug where some strokes are left visible
+        d3.selectAll(".bar1,bar2")
+        .transition("hide all strokes")
+        .duration(200)
+        .style("stroke-width", "0px");
+
         d3.select(this)
         .transition("show stroke")
         .duration(200)
@@ -128,8 +134,6 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
         .duration(100)
         .style("opacity", .9);
 
-        console.log("mousein");
-
     }
 
     function mousemove (d) {
@@ -156,8 +160,6 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
         .duration(100)
         .style("opacity", .9);
 
-        console.log("mousemove");
-
     }
     
     function mouseout () {
@@ -169,8 +171,6 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
         div.transition("hide div")
         .duration(100)
         .style("opacity", 0);
-
-        console.log("mouseout");
     }  
 
 
