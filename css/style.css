@@ -78,7 +78,7 @@ h2 {
 #chart {
     width: 100%;
     max-width: 800px;
-    height: 500px;
+    height: 470px;
     position: relative;
 }
 
@@ -307,7 +307,9 @@ div.tooltip p {
 
 #logo {
     display: inline-block;
-    float: right;
+    position: absolute;
+    top: 0;
+    right: 0;
     height: 25px;
     width: 30px;
     background-image:url(../img/logo-mobile.svg);
