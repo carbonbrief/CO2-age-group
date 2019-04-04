@@ -64,11 +64,6 @@ selectRegion[0].addEventListener("change", function(e) {
 });
 
 
-// selectScenario[0].addEventListener("change", function(e) {
-//     scenario = e.target.value;
-//     update(scenario);
-// });
-
 selectAge[0].addEventListener("change", function(e) {
     age = e.target.value;
     update(age);
@@ -77,6 +72,11 @@ selectAge[0].addEventListener("change", function(e) {
 selectEmissions[0].addEventListener("change", function(e) {
     emissions = e.target.value;
     update(emissions);
+    if (emissions == "national") {
+        $("#emissions").text("Based on energy models for your country.");
+    } else {
+        $("#emissions").text("Dividing up remaining emissions equally for everyone on Earth.");
+    }
 });
 
 // reset dropdown on window reload

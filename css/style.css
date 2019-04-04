@@ -4,11 +4,37 @@ body {
     font-family: 'PT Sans', Helvetica, Arial, Sans-serif;
     width: 830px;
     height: 700px;
+    color: #333333;
+}
+
+p {
+    font-family: "PT Serif", serif;
+    font-size: 17px;
 }
 
 h1 {
     font-family: "PT Sans Narrow";
     font-weight: normal;
+}
+
+h2 {
+    font-family: "PT Sans Narrow";
+    font-weight: 700;
+    font-size: 42px;
+    margin: 0;
+}
+
+#budgetUser {
+    font-size: 70px;
+}
+
+#emissions {
+    font-size: 14px;
+    font-family: "PT Sans", sans-serif;
+}
+
+#emissions-par {
+    margin-top: 0;
 }
 
 .row {

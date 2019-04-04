@@ -205,7 +205,8 @@ function update () {
                 h${-(x.bandwidth())}Z
             `);
 
-        // select nonexistent DOM elements in order to return variables that will use to update text
+        // UPDATE UI TEXT
+        
         let budgetUser = d3.selectAll("placeholder")
         .data(data)
         .enter()
@@ -216,8 +217,6 @@ function update () {
         d3.selectAll("#budgetUser")
         .text(decimalFormat(budgetUser));
 
-        console.log(budgetUser);
-
         let budgetReference = d3.selectAll("placeholder")
         .data(data)
         .enter()
@@ -227,17 +226,10 @@ function update () {
 
         let referencePercent = (budgetUser/budgetReference)*100;
 
-        console.log(budgetReference);
-
         d3.selectAll("#budgetReference")
         .text(decimalFormat(referencePercent));
 
-
-        // let budgetUser = budget;
-
-        // let budget
-
-        // console.log(budget.__data__.onepointfive);
+        // HIGHLIGHT AGE
 
         svg.selectAll(".bar1")
             .style("fill", "#E3A195")
