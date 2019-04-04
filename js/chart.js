@@ -17,7 +17,8 @@ let rect = d3.select("#chart").append("svg")
     .attr("width", parseInt(d3.select("#chart").style("width")))
     .attr("height", 20)
     .append("path")
-    .attr('class', 'indicator above') 
+    .attr('class', 'indicator')
+    .attr("id", "above") 
     .attr("d", (
         "M1 1 " +
         "V 19 " + 
@@ -27,6 +28,7 @@ let rect = d3.select("#chart").append("svg")
 var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
+    .attr('transform', 'translate(0,-7)')
     .append("g")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
@@ -201,7 +203,6 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
     .attr('class', 'indicator')  
     .attr("d", function(d) { return line(d.values); });
 
-
 });
 
 function update () {
@@ -297,11 +298,7 @@ function update () {
                     },
                     {
                         x: age,
-                        y: 1700
-                    },
-                    {
-                        x: 0,
-                        y: 1700
+                        y: 1750
                     }
                 ]
             }
@@ -324,6 +321,21 @@ function update () {
             .style("fill", "#97C7E6")
             .filter(function(d) { return d.age == age; })
             .style("fill", "#439AD2");
+
+        let selection = d3.selectAll(".bar1")
+            .filter(function(d) { return d.age == age; });
+
+        let xCoord = x(selection.node().__data__.age);
+
+        console.log(xCoord);
+
+        d3.select("#above")
+            .attr("d", (
+                "M1 1 " +
+                "V 19 " + 
+                "H " + 
+                (xCoord + margin.left + 3)
+            ));
 
     });
 
