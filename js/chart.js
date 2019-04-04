@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 40, right: 10, bottom: 50, left: 50},
+var margin = {top: 20, right: 10, bottom: 50, left: 50},
     width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
     height = 450 - margin.top - margin.bottom;
 
@@ -10,8 +10,19 @@ var div = d3.select("body").append("div")
     .style("opacity", 0);
 
 // set the ranges
-var x = d3.scaleBand().range([0, width]).padding(0.1);
+var x = d3.scaleBand().range([0, width]).padding(0.12);
 var y = d3.scaleLinear().range([height, 0]);
+
+let rect = d3.select("#chart").append("svg")
+    .attr("width", parseInt(d3.select("#chart").style("width")))
+    .attr("height", 20)
+    .append("path")
+    .attr('class', 'indicator above') 
+    .attr("d", (
+        "M1 1 " +
+        "V 19 " + 
+        "H 100"
+    ));
 
 var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -178,10 +189,6 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
                 {
                     x: age,
                     y: 1700
-                },
-                {
-                    x: 0,
-                    y: 1700
                 }
             ]
         }
@@ -193,6 +200,7 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
     .append('path')
     .attr('class', 'indicator')  
     .attr("d", function(d) { return line(d.values); });
+
 
 });
 
