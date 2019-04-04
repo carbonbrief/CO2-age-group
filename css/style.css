@@ -5,7 +5,12 @@ body {
     width: 830px;
     height: 800px;
     color: #333333;
+}
+
+#container {
     margin: 20px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
 }
 
 p {
@@ -36,13 +41,6 @@ h2 {
 
 #emissions-par {
     margin-top: 0;
-}
-
-#expand {
-    border-left: 1px solid #cecece;
-    margin-bottom: 0;
-    margin-left: 0.5px;
-    padding-left: 20px;
 }
 
 .row {
@@ -89,8 +87,10 @@ h2 {
 
 #intro {
     position: fixed;
-    width: inherit;
-    height: inherit;
+    max-width: 830px;
+    max-height: 800px;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
     top: 0;
     left: 0;
     background: #f3f3f3;
