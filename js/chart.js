@@ -63,7 +63,7 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
 
     // Scale the range of the data
     x.domain(data.map(function(d) { return d.age; }));
-    y.domain([-100, 1600]);
+    y.domain([-100, 1550]);
 
     // append the rectangles for 2C
     svg.selectAll(".bar1")
@@ -227,7 +227,7 @@ function update () {
 
         // Scale the range of the data
         x.domain(data.map(function(d) { return d.age; }));
-        y.domain([-100, 1600]);
+        y.domain([-100, 1550]);
 
         // ADD BARS
 
