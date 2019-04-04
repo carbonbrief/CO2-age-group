@@ -310,20 +310,8 @@ function update () {
         .duration(0)
         .attr("d", function(d) { return line(d.values); });
 
-        // HIGHLIGHT AGE
-
-        svg.selectAll(".bar1")
-            .style("fill", "#E3A195")
-            .filter(function(d) { return d.age == age; })
-            .style("fill", "#CC5540");
-
-        svg.selectAll(".bar2")
-            .style("fill", "#97C7E6")
-            .filter(function(d) { return d.age == age; })
-            .style("fill", "#439AD2");
-
         let selection = d3.selectAll(".bar1")
-            .filter(function(d) { return d.age == age; });
+        .filter(function(d) { return d.age == age; });
 
         let xCoord = x(selection.node().__data__.age);
 
@@ -336,6 +324,34 @@ function update () {
                 "H " + 
                 (xCoord + margin.left + 3)
             ));
+
+        // fade lines as transition takes place
+
+        svg.selectAll(".indicator")
+        .attr("opacity", 0)
+        .transition()
+        .duration(750)
+        .ease(d3.easePolyIn)
+        .attr("opacity", 1);
+
+        d3.select("#above")
+        .attr("opacity", 0)
+        .transition()
+        .duration(750)
+        .ease(d3.easePolyIn)
+        .attr("opacity", 1);
+
+        // HIGHLIGHT AGE
+
+        svg.selectAll(".bar1")
+            .style("fill", "#E3A195")
+            .filter(function(d) { return d.age == age; })
+            .style("fill", "#CC5540");
+
+        svg.selectAll(".bar2")
+            .style("fill", "#97C7E6")
+            .filter(function(d) { return d.age == age; })
+            .style("fill", "#439AD2");
 
     });
 
