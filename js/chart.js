@@ -20,7 +20,7 @@ let rect = d3.select("#chart").append("svg")
     .attr('class', 'indicator')
     .attr("id", "above") 
     .attr("d", (
-        "M1 1 " +
+        "M51 1 " +
         "V 19 " + 
         "H 100"
     ));
@@ -319,7 +319,7 @@ function update () {
 
         d3.select("#above")
             .attr("d", (
-                "M1 1 " +
+                "M51 1 " +
                 "V 19 " + 
                 "H " + 
                 (xCoord + margin.left + 3)
