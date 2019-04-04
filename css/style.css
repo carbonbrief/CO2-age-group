@@ -38,6 +38,13 @@ h2 {
     margin-top: 0;
 }
 
+#expand {
+    border-left: 1px solid #cecece;
+    margin-bottom: 0;
+    margin-left: 0.5px;
+    padding-left: 20px;
+}
+
 .row {
     /* order important so don't override new syntax with old */
     display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
@@ -135,8 +142,6 @@ select {
     margin-bottom: 15px;
 }
 
-
-
 .selector2 {
     width: 300px;
 }
@@ -212,9 +217,9 @@ button:active {
 }
 
 #key {
-    position: absolute;
+    /* position: absolute;
     top: 30px;
-    left: 65px;
+    left: 65px; */
 }
 
 .colour-key {

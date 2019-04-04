@@ -330,14 +330,14 @@ function update () {
         svg.selectAll(".indicator")
         .attr("opacity", 0)
         .transition()
-        .duration(750)
+        .duration(850)
         .ease(d3.easePolyIn)
         .attr("opacity", 1);
 
         d3.select("#above")
         .attr("opacity", 0)
         .transition()
-        .duration(750)
+        .duration(850)
         .ease(d3.easePolyIn)
         .attr("opacity", 1);
 
