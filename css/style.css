@@ -116,8 +116,9 @@ h2 {
 }
 
 .indicator {
-    stroke: #333333;
+    stroke: #cecece;
     stroke-width: 1px;
+    fill: none;
 }
 
 select {
@@ -212,7 +213,7 @@ button:active {
 
 #key {
     position: absolute;
-    top: 10px;
+    top: 30px;
     left: 65px;
 }
 

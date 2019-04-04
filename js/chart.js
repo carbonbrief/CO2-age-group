@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 10, bottom: 50, left: 50},
+var margin = {top: 40, right: 10, bottom: 50, left: 50},
     width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
     height = 450 - margin.top - margin.bottom;
 
@@ -27,6 +27,14 @@ var yAxis = d3.axisLeft(y);
 const decimalFormat = d3.format(".0f");
 const rx = 2.5;
 const ry = 2.5;
+
+let budgetUser;
+let budgetReference;
+
+let line = d3.line()
+    .curve(d3.curveLinear)
+    .x(function(d) { return x(d.x) + 3; })
+    .y(function(d) { return y(d.y); });
 
 // Get the data
 d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
@@ -76,47 +84,47 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
         .on("mouseover", mouseover)
         .on("mouseout", mouseout);
 
-        function mouseover (d) {
+    function mouseover (d) {
 
-            d3.select(this)
-            .transition("show stroke")
-            .duration(200)
-            .style("stroke-width", 1);
+        d3.select(this)
+        .transition("show stroke")
+        .duration(200)
+        .style("stroke-width", 1);
 
-            function string () {
-                if (d.age == 1) {
-                    return "year old"
-                } else {
-                    return  "years old"
-                }
+        function string () {
+            if (d.age == 1) {
+                return "year old"
+            } else {
+                return  "years old"
             }
-
-            div.html(
-                "<h4>" + d.age + " " + string() + "</h4>" +
-                "<p><div class='tooltip-key' style='background-color: #439AD2;'></div><p class='inline'><b>1.5C allowance: </b></p></p>" + 
-                "<p>" + decimalFormat(d.onepointfive) + " tons of CO2</p>" +
-                "<p><div class='tooltip-key' style='background-color: #CC5540;'></div><p class='inline'><b>2C allowance: </b></p></p>" +
-                "<p>" + decimalFormat(d.two) + " tons of CO2</p>"
-            )
-            .style("left", (d3.event.pageX + 10) + "px")
-            .style("top", (d3.event.pageY - 20) + "px");
-
-            div.transition("show div")
-            .duration(100)
-            .style("opacity", .9);
-    
         }
-        
-        function mouseout () {
-            d3.select(this)
-            .transition("hide stroke")
-            .duration(200)
-            .style("stroke-width", "0px");
-            // hide tooltip
-            div.transition("hide div")
-            .duration(100)
-            .style("opacity", 0);
-        }  
+
+        div.html(
+            "<h4>" + d.age + " " + string() + "</h4>" +
+            "<p><div class='tooltip-key' style='background-color: #439AD2;'></div><p class='inline'><b>1.5C allowance: </b></p></p>" + 
+            "<p>" + decimalFormat(d.onepointfive) + " tons of CO2</p>" +
+            "<p><div class='tooltip-key' style='background-color: #CC5540;'></div><p class='inline'><b>2C allowance: </b></p></p>" +
+            "<p>" + decimalFormat(d.two) + " tons of CO2</p>"
+        )
+        .style("left", (d3.event.pageX + 10) + "px")
+        .style("top", (d3.event.pageY - 20) + "px");
+
+        div.transition("show div")
+        .duration(100)
+        .style("opacity", .9);
+
+    }
+    
+    function mouseout () {
+        d3.select(this)
+        .transition("hide stroke")
+        .duration(200)
+        .style("stroke-width", "0px");
+        // hide tooltip
+        div.transition("hide div")
+        .duration(100)
+        .style("opacity", 0);
+    }  
 
 
     // Add the X Axis
@@ -146,6 +154,45 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
         .attr("dy", ".5em")
         .style("text-anchor", "middle")
         .text("Age");
+
+    // VARIABLE FOR FIRST LINE
+
+    budgetUser = d3.selectAll("placeholder")
+        .data(data)
+        .enter()
+        .filter(function(d) { return d.age == 30; });
+
+    budgetUser = budgetUser.nodes()[0].__data__.onepointfive;
+
+    // ADD LINE HIGHLIGHT
+
+    age = 30;
+
+    let lineData = [
+        {
+            values: [
+                {
+                    x: age,
+                    y: budgetUser
+                },
+                {
+                    x: age,
+                    y: 1700
+                },
+                {
+                    x: 0,
+                    y: 1700
+                }
+            ]
+        }
+    ]
+
+    svg.selectAll('.indicator')
+    .data(lineData)
+    .enter()
+    .append('path')
+    .attr('class', 'indicator')  
+    .attr("d", function(d) { return line(d.values); });
 
 });
 
@@ -209,7 +256,7 @@ function update () {
 
         // UPDATE UI TEXT
 
-        let budgetUser = d3.selectAll("placeholder")
+        budgetUser = d3.selectAll("placeholder")
         .data(data)
         .enter()
         .filter(function(d) { return d.age == age; });
@@ -219,7 +266,7 @@ function update () {
         d3.selectAll("#budgetUser")
         .text(decimalFormat(budgetUser));
 
-        let budgetReference = d3.selectAll("placeholder")
+        budgetReference = d3.selectAll("placeholder")
         .data(data)
         .enter()
         .filter(function(d) { return d.age == 67; });
@@ -231,7 +278,7 @@ function update () {
         d3.selectAll("#budgetReference")
         .text(decimalFormat(referencePercent));
 
-        // ADD LINE HIGHLIGHT
+        // UPDATE LINE HIGHLIGHT
 
         let lineData = [
             {
@@ -243,24 +290,19 @@ function update () {
                     {
                         x: age,
                         y: 1700
+                    },
+                    {
+                        x: 0,
+                        y: 1700
                     }
                 ]
             }
         ]
 
-        // define the line
-        let line = d3.line()
-        .curve(d3.curveLinear)
-        .x(function(d) { return x(d.x); })
-        .y(function(d) { return y(d.y); });
-
-        // draw the line
-
         svg.selectAll('.indicator')
         .data(lineData)
-        .enter()
-        .append('path')
-        .attr('class', 'indicator')  
+        .transition()
+        .duration(0)
         .attr("d", function(d) { return line(d.values); });
 
         // HIGHLIGHT AGE
