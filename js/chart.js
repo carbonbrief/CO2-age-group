@@ -55,7 +55,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
 
     // Scale the range of the data
     x.domain(data.map(function(d) { return d.age; }));
-    y.domain([-120, 1500]);
+    y.domain([-120, 1400]);
 
     // Add the line at the origin
     svg.append("path")
@@ -238,15 +238,15 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
                 },
                 {
                     x: age,
-                    y: 1550
+                    y: 1450
                 },
                 {
                     x: 2017,
-                    y: 1550
+                    y: 1450
                 },
                 {
                     x: 2017,
-                    y: 1750
+                    y: 1650
                 }
             ]
         }
@@ -283,7 +283,7 @@ function update () {
 
         // Scale the range of the data
         x.domain(data.map(function(d) { return d.age; }));
-        y.domain([-120, 1500]);
+        y.domain([-120, 1400]);
 
         // ADD BARS
 
@@ -382,15 +382,15 @@ function update () {
                     },
                     {
                         x: age,
-                        y: 1550
+                        y: 1450
                     },
                     {
                         x: 2017,
-                        y: 1550
+                        y: 1450
                     },
                     {
                         x: 2017,
-                        y: 1750
+                        y: 1650
                     }
                 ]
             }
