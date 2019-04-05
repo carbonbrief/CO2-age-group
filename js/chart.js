@@ -70,14 +70,27 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
         .data(data)
         .enter().append("path")
         .attr("class", "bar1")
-        .attr("d", d => `
-            M${x(d.age)},${y(d.two) + ry}
-            a${rx},${ry} 0 0 1 ${rx},${-ry}
-            h${x.bandwidth() - 2 * rx}
-            a${rx},${ry} 0 0 1 ${rx},${ry}
-            v${height - y(d.two) - ry}
-            h${-(x.bandwidth())}Z
-            `)
+        .attr("d", function (d) {
+            if (d.two > 0) {
+                return `
+                    M${x(d.age)},${y(d.two) + ry}
+                    a${rx},${ry} 0 0 1 ${rx},${-ry}
+                    h${x.bandwidth() - 2 * rx}
+                    a${rx},${ry} 0 0 1 ${rx},${ry}
+                    v${height - y(d.two - 100) - ry}
+                    h${-(x.bandwidth())}Z
+                    `
+            } else {
+                return `
+                M${x(d.age)},${y(d.two) + ry}
+                a${rx},${ry} 0 0 1 ${rx},${-ry}
+                h${x.bandwidth() - 2 * rx}
+                a${rx},${ry} 0 0 1 ${rx},${ry}
+                v${height - y(d.two) - ry}
+                h${-(x.bandwidth())}Z
+                `
+            }
+        })
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
         .on("mouseout", mouseout);
@@ -87,14 +100,27 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
         .data(data)
         .enter().append("path")
         .attr("class", "bar2")
-        .attr("d", d => `
-            M${x(d.age)},${y(d.onepointfive) + ry}
-            a${rx},${ry} 0 0 1 ${rx},${-ry}
-            h${x.bandwidth() - 2 * rx}
-            a${rx},${ry} 0 0 1 ${rx},${ry}
-            v${height - y(d.onepointfive) - ry}
-            h${-(x.bandwidth())}Z
-            `)
+        .attr("d", function (d) {
+            if (d.onepointfive > 0) {
+                return `
+                    M${x(d.age)},${y(d.onepointfive) + ry}
+                    a${rx},${ry} 0 0 1 ${rx},${-ry}
+                    h${x.bandwidth() - 2 * rx}
+                    a${rx},${ry} 0 0 1 ${rx},${ry}
+                    v${height - y(d.onepointfive - 100) - ry}
+                    h${-(x.bandwidth())}Z
+                    `
+            } else {
+                return `
+                M${x(d.age)},${y(d.onepointfive) + ry}
+                a${rx},${ry} 0 0 1 ${rx},${-ry}
+                h${x.bandwidth() - 2 * rx}
+                a${rx},${ry} 0 0 1 ${rx},${ry}
+                v${height - y(d.onepointfive) - ry}
+                h${-(x.bandwidth())}Z
+                `
+            }
+        })
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
         .on("mouseout", mouseout);
@@ -277,14 +303,28 @@ function update () {
                 return i * 2;
             })
             .duration(750)
-            .attr("d", d => `
-                M${x(d.age)},${y(d.two) + ry}
-                a${rx},${ry} 0 0 1 ${rx},${-ry}
-                h${x.bandwidth() - 2 * rx}
-                a${rx},${ry} 0 0 1 ${rx},${ry}
-                v${height - y(d.two) - ry}
-                h${-(x.bandwidth())}Z
-            `);
+            .attr("d", function (d) {
+                // ensure that origin is at zero
+                if (d.two > 0) {
+                    return `
+                        M${x(d.age)},${y(d.two) + ry}
+                        a${rx},${ry} 0 0 1 ${rx},${-ry}
+                        h${x.bandwidth() - 2 * rx}
+                        a${rx},${ry} 0 0 1 ${rx},${ry}
+                        v${height - y(d.two  - 100) - ry}
+                        h${-(x.bandwidth())}Z
+                        `
+                } else {
+                    return `
+                    M${x(d.age)},${y(d.two) + ry}
+                    a${rx},${ry} 0 0 1 ${rx},${-ry}
+                    h${x.bandwidth() - 2 * rx}
+                    a${rx},${ry} 0 0 1 ${rx},${ry}
+                    v${height - y(d.two) - ry}
+                    h${-(x.bandwidth())}Z
+                    `
+                }
+        });
 
         svg.selectAll(".bar2")
             .data(data)
@@ -293,14 +333,28 @@ function update () {
                 return i * 2;
             })
             .duration(750)
-            .attr("d", d => `
-                M${x(d.age)},${y(d.onepointfive) + ry}
-                a${rx},${ry} 0 0 1 ${rx},${-ry}
-                h${x.bandwidth() - 2 * rx}
-                a${rx},${ry} 0 0 1 ${rx},${ry}
-                v${height - y(d.onepointfive) - ry}
-                h${-(x.bandwidth())}Z
-            `);
+            .attr("d", function (d) {
+                // ensure that origin is at zero
+                if (d.onepointfive > 0) {
+                    return `
+                        M${x(d.age)},${y(d.onepointfive) + ry}
+                        a${rx},${ry} 0 0 1 ${rx},${-ry}
+                        h${x.bandwidth() - 2 * rx}
+                        a${rx},${ry} 0 0 1 ${rx},${ry}
+                        v${height - y(d.onepointfive  - 100) - ry}
+                        h${-(x.bandwidth())}Z
+                        `
+                } else {
+                    return `
+                    M${x(d.age)},${y(d.onepointfive) + ry}
+                    a${rx},${ry} 0 0 1 ${rx},${-ry}
+                    h${x.bandwidth() - 2 * rx}
+                    a${rx},${ry} 0 0 1 ${rx},${ry}
+                    v${height - y(d.onepointfive) - ry}
+                    h${-(x.bandwidth())}Z
+                    `
+                }
+            });
 
         // UPDATE UI TEXT
 
