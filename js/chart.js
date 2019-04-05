@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 10, bottom: 50, left: 50},
+var margin = {top: 20, right: 30, bottom: 50, left: 50},
     width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
     height = 450 - margin.top - margin.bottom;
 
@@ -102,7 +102,12 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
     function mouseover (d) {
 
         // to help deal with bug where some strokes are left visible
-        d3.selectAll(".bar1,bar2")
+        d3.selectAll(".bar1")
+        .transition("hide all strokes")
+        .duration(200)
+        .style("stroke-width", "0px");
+
+        d3.selectAll(".bar2")
         .transition("hide all strokes")
         .duration(200)
         .style("stroke-width", "0px");
