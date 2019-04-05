@@ -128,9 +128,9 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
         div.html(
             "<h4>" + d.age + " " + string() + "</h4>" +
             "<p><div class='tooltip-key' style='background-color: #439AD2;'></div><p class='inline'><b>1.5C allowance</b></p></p>" + 
-            "<p>" + decimalFormat(d.onepointfive) + " tons of CO2</p>" +
+            "<p>" + decimalFormat(d.onepointfive) + " tonnes of CO2</p>" +
             "<p><div class='tooltip-key' style='background-color: #CC5540;'></div><p class='inline'><b>2C allowance</b></p></p>" +
-            "<p>" + decimalFormat(d.two) + " tons of CO2</p>"
+            "<p>" + decimalFormat(d.two) + " tonnes of CO2</p>"
         )
         .style("left", (d3.event.pageX - 55) + "px")
         .style("top", (d3.event.pageY - 165) + "px");
@@ -154,9 +154,9 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
         div.html(
             "<h4>" + d.age + " " + string() + "</h4>" +
             "<p><div class='tooltip-key' style='background-color: #439AD2;'></div><p class='inline'><b>1.5C allowance</b></p></p>" + 
-            "<p>" + decimalFormat(d.onepointfive) + " tons of CO2</p>" +
+            "<p>" + decimalFormat(d.onepointfive) + " tonnes of CO2</p>" +
             "<p><div class='tooltip-key' style='background-color: #CC5540;'></div><p class='inline'><b>2C allowance</b></p></p>" +
-            "<p>" + decimalFormat(d.two) + " tons of CO2</p>"
+            "<p>" + decimalFormat(d.two) + " tonnes of CO2</p>"
         )
         .style("left", (d3.event.pageX - 55) + "px")
         .style("top", (d3.event.pageY - 165) + "px");
