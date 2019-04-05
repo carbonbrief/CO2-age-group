@@ -196,7 +196,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
         .attr("x",0 - (height / 2))
         .attr("dy", "1em")
         .style("text-anchor", "middle")
-        .text("Tons of CO2");
+        .text("Tonnes of CO2");
 
     svg.append("text")
         .attr("class", "axis label")
