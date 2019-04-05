@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 60, right: 50, bottom: 50, left: 50},
+var margin = {top: 70, right: 50, bottom: 50, left: 50},
     width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
     height = 480 - margin.top - margin.bottom;
 
@@ -238,11 +238,11 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
                 },
                 {
                     x: age,
-                    y: 1450
+                    y: 1480
                 },
                 {
                     x: 2017,
-                    y: 1450
+                    y: 1480
                 },
                 {
                     x: 2017,
@@ -382,11 +382,11 @@ function update () {
                     },
                     {
                         x: age,
-                        y: 1450
+                        y: 1480
                     },
                     {
                         x: 2017,
-                        y: 1450
+                        y: 1480
                     },
                     {
                         x: 2017,
