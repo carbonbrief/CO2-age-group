@@ -183,11 +183,12 @@ select.selector2 {
 }
 
 select.selector {
-    background: #f3f3f3;
+    background: url(https://www.carbonbrief.org/wp-content/uploads/2019/04/dropdown-arrow-dark-2.png) 96% / 15% no-repeat #f3f3f3;
+    background-size: 20px 13px;
     color: #333333;
 }
 
-/* add arrow */
+/* add arrow
 
 label {position:relative}
 label:after {
@@ -208,7 +209,7 @@ label:before {
     position:absolute;
     pointer-events:none;
     display:block;
-}
+} */
 
 button {
     background: #2f8fce;
