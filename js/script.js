@@ -4,7 +4,7 @@ let selectRegion = document.getElementsByClassName("selectorRegion");
 //let selectScenario = document.getElementsByClassName("selectorScenario");
 let selectEmissions = document.getElementsByClassName("selectorEmissions");
 
-let age = 0;
+let age = 1917;
 let region = "United Kingdom";
 //let scenario = "2.6";
 let emissions = "national";
@@ -32,8 +32,8 @@ for (var i=0; i<101; ++i ) {
 
 function onComplete() {  
     // set default selected age to 1980
-    selectAge[0].getElementsByTagName('option')[30].setAttribute('selected', true);
-    selectAge[1].getElementsByTagName('option')[30].setAttribute('selected', true);
+    selectAge[0].getElementsByTagName('option')[63].setAttribute('selected', true);
+    selectAge[1].getElementsByTagName('option')[63].setAttribute('selected', true);
 }
 
 function hideIntro () {

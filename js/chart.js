@@ -3,7 +3,7 @@ var margin = {top: 20, right: 50, bottom: 50, left: 50},
     width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
     height = 450 - margin.top - margin.bottom;
 
-let tickValues = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+let tickValues = [1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010];
 
 var div = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -56,7 +56,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
 
     // format the data
     data.forEach(function(d) {
-        d.age = d.ages;
+        d.age = d.birth_year;
         d.onepointfive = +d["1.5C"];
         d.two = +d["2C"];
     });
@@ -143,16 +143,8 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
         .duration(200)
         .style("stroke-width", 1);
 
-        function string () {
-            if (d.age == 1) {
-                return "year old"
-            } else {
-                return  "years old"
-            }
-        }
-
         div.html(
-            "<h4>" + d.age + " " + string() + "</h4>" +
+            "<h4>Born in " + d.age + "</h4>" +
             "<p><div class='tooltip-key' style='background-color: #439AD2;'></div><p class='inline'><b>1.5C allowance</b></p></p>" + 
             "<p>" + decimalFormat(d.onepointfive) + " tonnes of CO2</p>" +
             "<p><div class='tooltip-key' style='background-color: #CC5540;'></div><p class='inline'><b>2C allowance</b></p></p>" +
@@ -169,16 +161,9 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
 
     function mousemove (d) {
 
-        function string () {
-            if (d.age == 1) {
-                return "year old"
-            } else {
-                return  "years old"
-            }
-        }
 
         div.html(
-            "<h4>" + d.age + " " + string() + "</h4>" +
+            "<h4>Born in " + d.age + "</h4>" +
             "<p><div class='tooltip-key' style='background-color: #439AD2;'></div><p class='inline'><b>1.5C allowance</b></p></p>" + 
             "<p>" + decimalFormat(d.onepointfive) + " tonnes of CO2</p>" +
             "<p><div class='tooltip-key' style='background-color: #CC5540;'></div><p class='inline'><b>2C allowance</b></p></p>" +
@@ -238,7 +223,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
     budgetUser = d3.selectAll("placeholder")
         .data(data)
         .enter()
-        .filter(function(d) { return d.age == 30; });
+        .filter(function(d) { return d.age == 1980; });
 
     budgetUser = budgetUser.nodes()[0].__data__.onepointfive;
 
@@ -283,7 +268,7 @@ function update () {
 
         // format the data
         data.forEach(function(d) {
-            d.age = d.ages;
+            d.age = d.birth_year;
             d.onepointfive = +d["1.5C"];
             d.two = +d["2C"];
         });
@@ -371,7 +356,7 @@ function update () {
         budgetReference = d3.selectAll("placeholder")
         .data(data)
         .enter()
-        .filter(function(d) { return d.age == 67; });
+        .filter(function(d) { return d.age == 1950; });
 
         budgetReference = budgetReference.nodes()[0].__data__.onepointfive;
 
