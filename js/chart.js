@@ -38,8 +38,8 @@ var xAxis = d3.axisBottom(x).tickValues(tickValues);
 var yAxis = d3.axisLeft(y);
 
 const decimalFormat = d3.format(".0f");
-const rx = 2.5;
-const ry = 2.5;
+const rx = 2;
+const ry = 2;
 
 let budgetUser;
 let budgetReference;
@@ -83,10 +83,10 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
             } else {
                 return `
                 M${x(d.age)},${y(d.two) + ry}
-                a${rx},${ry} 0 0 1 ${rx},${-ry}
+                a${rx},${-ry} 0 0 0 ${rx},${ry}
                 h${x.bandwidth() - 2 * rx}
-                a${rx},${ry} 0 0 1 ${rx},${ry}
-                v${height - y(d.two) - ry}
+                a${rx},${ry} 0 0 0 ${rx},${-ry}
+                v${height - y(d.two - 100) - ry}
                 h${-(x.bandwidth())}Z
                 `
             }
@@ -113,10 +113,10 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
             } else {
                 return `
                 M${x(d.age)},${y(d.onepointfive) + ry}
-                a${rx},${ry} 0 0 1 ${rx},${-ry}
+                a${rx},${-ry} 0 0 0 ${rx},${ry}
                 h${x.bandwidth() - 2 * rx}
-                a${rx},${ry} 0 0 1 ${rx},${ry}
-                v${height - y(d.onepointfive) - ry}
+                a${rx},${ry} 0 0 0 ${rx},${-ry}
+                v${height - y(d.onepointfive - 100) - ry}
                 h${-(x.bandwidth())}Z
                 `
             }
@@ -317,10 +317,10 @@ function update () {
                 } else {
                     return `
                     M${x(d.age)},${y(d.two) + ry}
-                    a${rx},${ry} 0 0 1 ${rx},${-ry}
+                    a${rx},${-ry} 0 0 0 ${rx},${ry}
                     h${x.bandwidth() - 2 * rx}
-                    a${rx},${ry} 0 0 1 ${rx},${ry}
-                    v${height - y(d.two) - ry}
+                    a${rx},${ry} 0 0 0 ${rx},${-ry}
+                    v${height - y(d.two - 100) - ry}
                     h${-(x.bandwidth())}Z
                     `
                 }
@@ -347,10 +347,10 @@ function update () {
                 } else {
                     return `
                     M${x(d.age)},${y(d.onepointfive) + ry}
-                    a${rx},${ry} 0 0 1 ${rx},${-ry}
+                    a${rx},${-ry} 0 0 0 ${rx},${ry}
                     h${x.bandwidth() - 2 * rx}
-                    a${rx},${ry} 0 0 1 ${rx},${ry}
-                    v${height - y(d.onepointfive) - ry}
+                    a${rx},${ry} 0 0 0 ${rx},${-ry}
+                    v${height - y(d.onepointfive - 100) - ry}
                     h${-(x.bandwidth())}Z
                     `
                 }
