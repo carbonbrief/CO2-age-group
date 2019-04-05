@@ -33,7 +33,7 @@ let budgetUser;
 let budgetReference;
 
 let line = d3.line()
-    .curve(d3.curveLinear)
+    .curve(d3.curveBasis)
     .x(function(d) { return x(d.x) + 3; })
     .y(function(d) { return y(d.y); });
 
@@ -228,11 +228,11 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
                 },
                 {
                     x: age,
-                    y: 1650
+                    y: 1550
                 },
                 {
                     x: 2017,
-                    y: 1650
+                    y: 1550
                 },
                 {
                     x: 2017,
@@ -372,11 +372,11 @@ function update () {
                     },
                     {
                         x: age,
-                        y: 1650
+                        y: 1550
                     },
                     {
                         x: 2017,
-                        y: 1650
+                        y: 1550
                     },
                     {
                         x: 2017,
