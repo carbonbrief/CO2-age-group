@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
 var margin = {top: 60, right: 50, bottom: 50, left: 50},
     width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    height = 480 - margin.top - margin.bottom;
 
 let tickValues = [1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010];
 
@@ -51,7 +51,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
 
     // Scale the range of the data
     x.domain(data.map(function(d) { return d.age; }));
-    y.domain([-100, 1500]);
+    y.domain([-120, 1500]);
 
     // append the rectangles for 2C
     svg.selectAll(".bar1")
@@ -65,7 +65,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
                     a${rx},${ry} 0 0 1 ${rx},${-ry}
                     h${x.bandwidth() - 2 * rx}
                     a${rx},${ry} 0 0 1 ${rx},${ry}
-                    v${height - y(d.two - 100) - ry}
+                    v${height - y(d.two - 120) - ry}
                     h${-(x.bandwidth())}Z
                     `
             } else {
@@ -74,7 +74,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
                 a${rx},${-ry} 0 0 0 ${rx},${ry}
                 h${x.bandwidth() - 2 * rx}
                 a${rx},${ry} 0 0 0 ${rx},${-ry}
-                v${height - y(d.two - 100) - ry}
+                v${height - y(d.two - 120) - ry}
                 h${-(x.bandwidth())}Z
                 `
             }
@@ -95,7 +95,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
                     a${rx},${ry} 0 0 1 ${rx},${-ry}
                     h${x.bandwidth() - 2 * rx}
                     a${rx},${ry} 0 0 1 ${rx},${ry}
-                    v${height - y(d.onepointfive - 100) - ry}
+                    v${height - y(d.onepointfive - 120) - ry}
                     h${-(x.bandwidth())}Z
                     `
             } else {
@@ -104,7 +104,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
                 a${rx},${-ry} 0 0 0 ${rx},${ry}
                 h${x.bandwidth() - 2 * rx}
                 a${rx},${ry} 0 0 0 ${rx},${-ry}
-                v${height - y(d.onepointfive - 100) - ry}
+                v${height - y(d.onepointfive - 120) - ry}
                 h${-(x.bandwidth())}Z
                 `
             }
@@ -273,7 +273,7 @@ function update () {
 
         // Scale the range of the data
         x.domain(data.map(function(d) { return d.age; }));
-        y.domain([-100, 1500]);
+        y.domain([-120, 1500]);
 
         // ADD BARS
 
@@ -292,7 +292,7 @@ function update () {
                         a${rx},${ry} 0 0 1 ${rx},${-ry}
                         h${x.bandwidth() - 2 * rx}
                         a${rx},${ry} 0 0 1 ${rx},${ry}
-                        v${height - y(d.two  - 100) - ry}
+                        v${height - y(d.two  - 120) - ry}
                         h${-(x.bandwidth())}Z
                         `
                 } else {
@@ -301,7 +301,7 @@ function update () {
                     a${rx},${-ry} 0 0 0 ${rx},${ry}
                     h${x.bandwidth() - 2 * rx}
                     a${rx},${ry} 0 0 0 ${rx},${-ry}
-                    v${height - y(d.two - 100) - ry}
+                    v${height - y(d.two - 120) - ry}
                     h${-(x.bandwidth())}Z
                     `
                 }
@@ -322,7 +322,7 @@ function update () {
                         a${rx},${ry} 0 0 1 ${rx},${-ry}
                         h${x.bandwidth() - 2 * rx}
                         a${rx},${ry} 0 0 1 ${rx},${ry}
-                        v${height - y(d.onepointfive  - 100) - ry}
+                        v${height - y(d.onepointfive  - 120) - ry}
                         h${-(x.bandwidth())}Z
                         `
                 } else {
@@ -331,7 +331,7 @@ function update () {
                     a${rx},${-ry} 0 0 0 ${rx},${ry}
                     h${x.bandwidth() - 2 * rx}
                     a${rx},${ry} 0 0 0 ${rx},${-ry}
-                    v${height - y(d.onepointfive - 100) - ry}
+                    v${height - y(d.onepointfive - 120) - ry}
                     h${-(x.bandwidth())}Z
                     `
                 }
