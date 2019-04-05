@@ -214,7 +214,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
         .attr("x",0 + (width/2))
         .attr("dy", ".5em")
         .style("text-anchor", "middle")
-        .text("Age");
+        .text("Year born");
 
     // VARIABLE FOR FIRST LINE
 
