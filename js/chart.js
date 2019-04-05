@@ -132,8 +132,8 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
             "<p><div class='tooltip-key' style='background-color: #CC5540;'></div><p class='inline'><b>2C allowance: </b></p></p>" +
             "<p>" + decimalFormat(d.two) + " tons of CO2</p>"
         )
-        .style("left", (d3.event.pageX + 10) + "px")
-        .style("top", (d3.event.pageY - 20) + "px");
+        .style("left", (d3.event.pageX - 55) + "px")
+        .style("top", (d3.event.pageY - 170) + "px");
 
         div.transition("show div")
         .duration(100)
@@ -158,8 +158,8 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
             "<p><div class='tooltip-key' style='background-color: #CC5540;'></div><p class='inline'><b>2C allowance: </b></p></p>" +
             "<p>" + decimalFormat(d.two) + " tons of CO2</p>"
         )
-        .style("left", (d3.event.pageX + 10) + "px")
-        .style("top", (d3.event.pageY - 20) + "px");
+        .style("left", (d3.event.pageX - 55) + "px")
+        .style("top", (d3.event.pageY - 170) + "px");
 
         div.transition("show div")
         .duration(100)
