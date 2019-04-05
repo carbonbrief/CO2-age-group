@@ -29,7 +29,7 @@ h2 {
     font-size: 42px;
     margin: 0;
     padding-left: 20px;
-    border-left: 5px solid #97C7E6;
+    border-left: 5px solid #439AD2;
 }
 
 h3 {
@@ -42,6 +42,16 @@ h3 {
     border-radius: 2px;
 }
 
+#budgetReference {
+    font-family: "PT Sans", san-serif;
+    background-color: #f3f3f3;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding: 2px;
+    border-radius: 3px;
+    font-weight: 700;
+}
+
 #emissions {
     font-size: 14px;
     font-family: "PT Sans", sans-serif;
@@ -49,7 +59,7 @@ h3 {
 
 #emissions-par {
     margin-top: 0;
-    border-left: 5px solid #97C7E6;
+    border-left: 5px solid #439AD2;
     padding-left: 20px;
     margin-bottom: 0.1em;
 }

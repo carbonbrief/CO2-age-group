@@ -319,7 +319,7 @@ function update () {
         let referencePercent = (budgetUser/budgetReference)*100;
 
         d3.selectAll("#budgetReference")
-        .text(decimalFormat(referencePercent));
+        .text(decimalFormat(referencePercent) + "%");
 
         // UPDATE LINE HIGHLIGHT
 
