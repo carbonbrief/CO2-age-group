@@ -50,7 +50,7 @@ let line = d3.line()
     .y(function(d) { return y(d.y); });
 
 // Get the data
-d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
+d3.csv("./data/United Kingdom_national.csv", function(error, data) {
 
     if (error) throw error;
 
@@ -241,7 +241,7 @@ d3.csv("./new-data2/United Kingdom_national.csv", function(error, data) {
 
 function update () {
 
-    let file = "./new-data2/" + region + "_" + emissions + ".csv";
+    let file = "./data/" + region + "_" + emissions + ".csv";
 
     console.log(file);
 
