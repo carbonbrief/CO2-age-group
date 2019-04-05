@@ -21,6 +21,10 @@ var svg = d3.select("#chart").append("svg")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
+var zeroLine = d3.line()
+    .x(function(d) { return x(d.age); })
+    .y(function(d) { return y(0); });
+
 // Define the axes
 var xAxis = d3.axisBottom(x).tickValues(tickValues);
 var yAxis = d3.axisLeft(y);
@@ -52,6 +56,12 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
     // Scale the range of the data
     x.domain(data.map(function(d) { return d.age; }));
     y.domain([-120, 1500]);
+
+    // Add the line at the origin
+    svg.append("path")
+        .data([data])
+        .attr("class", "zero-line")
+        .attr("d", zeroLine);
 
     // append the rectangles for 2C
     svg.selectAll(".bar1")

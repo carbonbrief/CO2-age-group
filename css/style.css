@@ -318,3 +318,9 @@ div.tooltip p {
     visibility: visible;
     opacity: 0.5;
 }
+
+.zero-line {
+    fill: none;
+    stroke: rgb(110, 110, 110);
+    stroke-width: 0.5px;
+}
