@@ -1,7 +1,7 @@
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 50, bottom: 50, left: 50},
+var margin = {top: 60, right: 50, bottom: 50, left: 50},
     width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
-    height = 450 - margin.top - margin.bottom;
+    height = 500 - margin.top - margin.bottom;
 
 let tickValues = [1920, 1930, 1940, 1950, 1960, 1970, 1980, 1990, 2000, 2010];
 
@@ -13,22 +13,10 @@ var div = d3.select("body").append("div")
 var x = d3.scaleBand().range([0, width]).padding(0.12);
 var y = d3.scaleLinear().range([height, 0]);
 
-let rect = d3.select("#chart").append("svg")
-    .attr("width", parseInt(d3.select("#chart").style("width")))
-    .attr("height", 20)
-    .append("path")
-    .attr('class', 'indicator')
-    .attr("id", "above") 
-    .attr("d", (
-        "M51 1 " +
-        "V 19 " + 
-        "H 100"
-    ));
-
 var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-    .attr('transform', 'translate(0,-7)')
+    // .attr('transform', 'translate(0,-7)')
     .append("g")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
@@ -63,7 +51,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
 
     // Scale the range of the data
     x.domain(data.map(function(d) { return d.age; }));
-    y.domain([-100, 1550]);
+    y.domain([-100, 1500]);
 
     // append the rectangles for 2C
     svg.selectAll(".bar1")
@@ -229,7 +217,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
 
     // ADD LINE HIGHLIGHT
 
-    age = 30;
+    age = 1980;
 
     let lineData = [
         {
@@ -240,7 +228,15 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
                 },
                 {
                     x: age,
-                    y: 1700
+                    y: 1650
+                },
+                {
+                    x: 2017,
+                    y: 1650
+                },
+                {
+                    x: 2017,
+                    y: 1750
                 }
             ]
         }
@@ -277,7 +273,7 @@ function update () {
 
         // Scale the range of the data
         x.domain(data.map(function(d) { return d.age; }));
-        y.domain([-100, 1550]);
+        y.domain([-100, 1500]);
 
         // ADD BARS
 
@@ -376,6 +372,14 @@ function update () {
                     },
                     {
                         x: age,
+                        y: 1650
+                    },
+                    {
+                        x: 2017,
+                        y: 1650
+                    },
+                    {
+                        x: 2017,
                         y: 1750
                     }
                 ]
@@ -388,31 +392,9 @@ function update () {
         .duration(0)
         .attr("d", function(d) { return line(d.values); });
 
-        let selection = d3.selectAll(".bar1")
-        .filter(function(d) { return d.age == age; });
-
-        let xCoord = x(selection.node().__data__.age);
-
-        console.log(xCoord);
-
-        d3.select("#above")
-            .attr("d", (
-                "M51 1 " +
-                "V 19 " + 
-                "H " + 
-                (xCoord + margin.left + 3)
-            ));
-
         // fade lines as transition takes place
 
         svg.selectAll(".indicator")
-        .attr("opacity", 0)
-        .transition()
-        .duration(850)
-        .ease(d3.easePolyIn)
-        .attr("opacity", 1);
-
-        d3.select("#above")
         .attr("opacity", 0)
         .transition()
         .duration(850)
