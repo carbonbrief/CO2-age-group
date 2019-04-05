@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 30, bottom: 50, left: 50},
+var margin = {top: 20, right: 50, bottom: 50, left: 50},
     width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
     height = 450 - margin.top - margin.bottom;
 
@@ -127,17 +127,17 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
 
         div.html(
             "<h4>" + d.age + " " + string() + "</h4>" +
-            "<p><div class='tooltip-key' style='background-color: #439AD2;'></div><p class='inline'><b>1.5C allowance: </b></p></p>" + 
+            "<p><div class='tooltip-key' style='background-color: #439AD2;'></div><p class='inline'><b>1.5C allowance</b></p></p>" + 
             "<p>" + decimalFormat(d.onepointfive) + " tons of CO2</p>" +
-            "<p><div class='tooltip-key' style='background-color: #CC5540;'></div><p class='inline'><b>2C allowance: </b></p></p>" +
+            "<p><div class='tooltip-key' style='background-color: #CC5540;'></div><p class='inline'><b>2C allowance</b></p></p>" +
             "<p>" + decimalFormat(d.two) + " tons of CO2</p>"
         )
         .style("left", (d3.event.pageX - 55) + "px")
-        .style("top", (d3.event.pageY - 170) + "px");
+        .style("top", (d3.event.pageY - 165) + "px");
 
         div.transition("show div")
         .duration(100)
-        .style("opacity", .9);
+        .style("opacity", 1);
 
     }
 
@@ -159,11 +159,11 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
             "<p>" + decimalFormat(d.two) + " tons of CO2</p>"
         )
         .style("left", (d3.event.pageX - 55) + "px")
-        .style("top", (d3.event.pageY - 170) + "px");
+        .style("top", (d3.event.pageY - 165) + "px");
 
         div.transition("show div")
         .duration(100)
-        .style("opacity", .9);
+        .style("opacity", 1);
 
     }
     
