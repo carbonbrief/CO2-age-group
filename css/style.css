@@ -153,6 +153,12 @@ h3 {
     fill: none;
 }
 
+.bar-label {
+    fill: #f3f3f3;
+    stroke: #999999;
+    stroke-width: 0.5px;
+}
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;

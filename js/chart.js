@@ -64,6 +64,9 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
         .attr("class", "zero-line")
         .attr("d", zeroLine);
 
+    svg.append("rect")
+    .attrs({ x: x(1981), y: y(0), width: (x.bandwidth()*17) - 1, height: 20, "class": "bar-label" });
+
     // append the rectangles for 2C
     svg.selectAll(".bar1")
         .data(data)
