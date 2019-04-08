@@ -477,6 +477,15 @@ function update () {
             .filter(function(d) { return d.age == age; })
             .style("fill", "#439AD2");
 
+        // update download button
+
+        // no need to go up a filepath since will be adding this to the homepage
+        let fileName = region + "_" + emissions + ".csv";
+        let filePath = "data/" + fileName;
+
+        document.getElementById("download-button").setAttribute("download", fileName);
+        document.getElementById("download-button").setAttribute("href", filePath);
+
     });
 
 }
