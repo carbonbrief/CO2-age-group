@@ -56,7 +56,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
 
     // Scale the range of the data
     x.domain(data.map(function(d) { return d.age; }));
-    y.domain([-120, 1400]);
+    y.domain([-200, 1400]);
 
     // Add the line at the origin
     svg.append("path")
@@ -64,8 +64,34 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
         .attr("class", "zero-line")
         .attr("d", zeroLine);
 
+    // ADD GENERATION LABELS
+
+    // Pre Gen Z
     svg.append("rect")
-    .attrs({ x: x(1981), y: y(0), width: (x.bandwidth()*17) - 1, height: 20, "class": "bar-label" });
+    .attrs({ x: x(2012), y: y(0), width: ((x(2017) + x.bandwidth()) - x(2012)), height: 15, "class": "bar-label" });
+
+    // Gen Z
+    svg.append("rect")
+    .attrs({ x: x(1997), y: y(0), width: (x(2013) - x(1997)), height: 15, "class": "bar-label" });
+
+    // millenials
+    svg.append("rect")
+    .attrs({ x: x(1981), y: y(0), width: (x(1997) - x(1981)), height: 15, "class": "bar-label" });
+
+    // Gen Y
+    svg.append("rect")
+    .attrs({ x: x(1965), y: y(0), width: (x(1981) - x(1965)), height: 15, "class": "bar-label" });
+
+    // Boomers
+    svg.append("rect")
+    .attrs({ x: x(1946), y: y(0), width: (x(1965) - x(1946)), height: 15, "class": "bar-label" });
+
+    // Pre boomers
+    svg.append("rect")
+    .attrs({ x: x(1917), y: y(0), width: (x(1946) - x(1917)), height: 15, "class": "bar-label" });
+
+    svg.append("text")
+
 
     // append the rectangles for 2C
     svg.selectAll(".bar1")
@@ -79,7 +105,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
                     a${rx},${ry} 0 0 1 ${rx},${-ry}
                     h${x.bandwidth() - 2 * rx}
                     a${rx},${ry} 0 0 1 ${rx},${ry}
-                    v${height - y(d.two - 120) - ry}
+                    v${height - y(d.two - 200) - ry}
                     h${-(x.bandwidth())}Z
                     `
             } else {
@@ -88,7 +114,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
                 a${rx},${-ry} 0 0 0 ${rx},${ry}
                 h${x.bandwidth() - 2 * rx}
                 a${rx},${ry} 0 0 0 ${rx},${-ry}
-                v${height - y(d.two - 120) - ry}
+                v${height - y(d.two - 200) - ry}
                 h${-(x.bandwidth())}Z
                 `
             }
@@ -109,7 +135,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
                     a${rx},${ry} 0 0 1 ${rx},${-ry}
                     h${x.bandwidth() - 2 * rx}
                     a${rx},${ry} 0 0 1 ${rx},${ry}
-                    v${height - y(d.onepointfive - 120) - ry}
+                    v${height - y(d.onepointfive - 200) - ry}
                     h${-(x.bandwidth())}Z
                     `
             } else {
@@ -118,7 +144,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
                 a${rx},${-ry} 0 0 0 ${rx},${ry}
                 h${x.bandwidth() - 2 * rx}
                 a${rx},${ry} 0 0 0 ${rx},${-ry}
-                v${height - y(d.onepointfive - 120) - ry}
+                v${height - y(d.onepointfive - 200) - ry}
                 h${-(x.bandwidth())}Z
                 `
             }
@@ -287,7 +313,7 @@ function update () {
 
         // Scale the range of the data
         x.domain(data.map(function(d) { return d.age; }));
-        y.domain([-120, 1400]);
+        y.domain([-200, 1400]);
 
         // ADD BARS
 
@@ -306,7 +332,7 @@ function update () {
                         a${rx},${ry} 0 0 1 ${rx},${-ry}
                         h${x.bandwidth() - 2 * rx}
                         a${rx},${ry} 0 0 1 ${rx},${ry}
-                        v${height - y(d.two  - 120) - ry}
+                        v${height - y(d.two  - 200) - ry}
                         h${-(x.bandwidth())}Z
                         `
                 } else {
@@ -315,7 +341,7 @@ function update () {
                     a${rx},${-ry} 0 0 0 ${rx},${ry}
                     h${x.bandwidth() - 2 * rx}
                     a${rx},${ry} 0 0 0 ${rx},${-ry}
-                    v${height - y(d.two - 120) - ry}
+                    v${height - y(d.two - 200) - ry}
                     h${-(x.bandwidth())}Z
                     `
                 }
@@ -336,7 +362,7 @@ function update () {
                         a${rx},${ry} 0 0 1 ${rx},${-ry}
                         h${x.bandwidth() - 2 * rx}
                         a${rx},${ry} 0 0 1 ${rx},${ry}
-                        v${height - y(d.onepointfive  - 120) - ry}
+                        v${height - y(d.onepointfive  - 200) - ry}
                         h${-(x.bandwidth())}Z
                         `
                 } else {
@@ -345,7 +371,7 @@ function update () {
                     a${rx},${-ry} 0 0 0 ${rx},${ry}
                     h${x.bandwidth() - 2 * rx}
                     a${rx},${ry} 0 0 0 ${rx},${-ry}
-                    v${height - y(d.onepointfive - 120) - ry}
+                    v${height - y(d.onepointfive - 200) - ry}
                     h${-(x.bandwidth())}Z
                     `
                 }
