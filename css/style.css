@@ -129,6 +129,10 @@ h3 {
     margin-top: 20%;
 }
 
+#comparison {
+    margin-bottom: 0;
+}
+
 .line {
     fill: none;
     stroke-width: 2px;
@@ -157,7 +161,6 @@ h3 {
     fill: #f3f3f3;
     stroke: #999999;
     stroke-width: 0.7px;
-    border-radius: 5px;
 }
 
 .gen-label {
@@ -326,10 +329,10 @@ div.tooltip p {
 }
 
 #logo {
-    display: inline-block;
+    /* display: inline-block;
     position: absolute;
     top: 0;
-    right: 0;
+    right: 0; */
     height: 25px;
     width: 30px;
     background-image:url(../img/logo-mobile.svg);
@@ -337,6 +340,22 @@ div.tooltip p {
     background-repeat: no-repeat;
     visibility: visible;
     opacity: 0.5;
+}
+
+#logo-container {
+    position: absolute;
+    right: 0;
+}
+
+.footer {
+    float: left; 
+    margin-left: 10px;
+    text-align: right;
+}
+
+i {
+    padding-top: 5px;
+    color: #999999;
 }
 
 .zero-line {
