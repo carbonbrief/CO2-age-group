@@ -157,7 +157,12 @@ h3 {
     fill: #f3f3f3;
     stroke: #999999;
     stroke-width: 0.7px;
-    height: 15px;
+    border-radius: 5px;
+}
+
+.gen-label {
+    text-anchor: middle;
+    font-size: 11px;
 }
 
 select {
