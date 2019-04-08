@@ -301,6 +301,14 @@ div.tooltip p {
     font-size: 12.5px;
 }
 
+.domain {
+    stroke: #8097b1;
+}
+
+.tick line {
+    stroke: #8097b1;
+}
+
 .axis text {
     fill: #333333;
 }

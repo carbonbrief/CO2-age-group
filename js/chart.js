@@ -10,7 +10,7 @@ var div = d3.select("body").append("div")
     .style("opacity", 0);
 
 // set the ranges
-var x = d3.scaleBand().range([0, width]).padding(0.12);
+var x = d3.scaleBand().range([width, 0]).padding(0.12);
 var y = d3.scaleLinear().range([height, 0]);
 
 var svg = d3.select("#chart").append("svg")
@@ -241,11 +241,11 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
                     y: 1480
                 },
                 {
-                    x: 2017,
+                    x: 1917,
                     y: 1480
                 },
                 {
-                    x: 2017,
+                    x: 1917,
                     y: 1650
                 }
             ]
@@ -385,11 +385,11 @@ function update () {
                         y: 1480
                     },
                     {
-                        x: 2017,
+                        x: 1917,
                         y: 1480
                     },
                     {
-                        x: 2017,
+                        x: 1917,
                         y: 1650
                     }
                 ]
