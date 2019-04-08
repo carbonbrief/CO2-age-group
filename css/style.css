@@ -21,6 +21,7 @@ p {
 h1 {
     font-family: "PT Sans Narrow";
     font-weight: normal;
+    font-size: 40px;
 }
 
 h2 {
@@ -317,11 +318,11 @@ div.tooltip p {
 }
 
 .domain {
-    stroke: #8097b1;
+    stroke: #92a4b8;
 }
 
 .tick line {
-    stroke: #8097b1;
+    stroke: #92a4b8;
 }
 
 .axis text {
@@ -341,6 +342,7 @@ div.tooltip p {
 #logo-container {
     position: absolute;
     right: 0;
+    margin-top: 10px;
 }
 
 .footer {
@@ -371,4 +373,68 @@ i {
     fill: none;
     stroke: rgb(110, 110, 110);
     stroke-width: 0.5px;
+}
+
+@media all and (max-width: 900px) {
+
+    body {
+        width: 700px;
+    }
+
+    #container {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: calc(100% - 20px);
+    }
+
+    p {
+        font-size: 14.5px;
+    }
+
+    .axis {
+        font-size: 12px;
+    }
+
+    #budgetUser {
+        font-size: 64px;
+    }
+
+    h2 {
+        font-size: 34px;
+    }
+
+    #emissions {
+        font-size: 13px;
+    }
+}
+
+@media all and (max-width: 600px) {
+
+    body {
+        width: 650px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .selector {
+        width: 180px;
+    }
+
+    #budgetUser {
+        font-size: 60px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    #emissions {
+        font-size: 12px;
+    }
 }
