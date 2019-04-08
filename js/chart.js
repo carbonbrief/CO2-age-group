@@ -30,6 +30,7 @@ var xAxis = d3.axisBottom(x).tickValues(tickValues);
 var yAxis = d3.axisLeft(y);
 
 const decimalFormat = d3.format(".0f");
+const decimalFormat2 = d3.format(".1f");
 const rx = 2;
 const ry = 2;
 
@@ -366,10 +367,10 @@ function update () {
 
         budgetReference = budgetReference.nodes()[0].__data__.onepointfive;
 
-        let referencePercent = (budgetUser/budgetReference)*100;
+        let reference = budgetReference/budgetUser;
 
         d3.selectAll("#budgetReference")
-        .text(decimalFormat(referencePercent) + "%");
+        .text(decimalFormat2(reference) + " times");
 
         // UPDATE LINE HIGHLIGHT
 
