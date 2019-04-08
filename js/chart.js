@@ -419,6 +419,12 @@ function update () {
         d3.selectAll("#budgetReference")
         .text(decimalFormat2(reference) + " times");
 
+        if (age == 1950) {
+            $("#comparison").css("visibility", "hidden");
+        } else {
+            $("#comparison").css("visibility", "visible");
+        }
+
         // UPDATE LINE HIGHLIGHT
 
         let lineData = [
