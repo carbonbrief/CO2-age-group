@@ -175,6 +175,7 @@ select {
     appearance: none;
     border:2px;
     padding: 4px;
+    padding-right: 20px;
     outline:0px;
 }
 
@@ -193,13 +194,13 @@ select.selector2 {
     border:2px;
     padding: 6px;
     margin-bottom: 15px;
-    background: url(https://www.carbonbrief.org/wp-content/uploads/2018/04/arrow-for-map.png) 96% / 15% no-repeat #333333;
+    background: url(https://www.carbonbrief.org/wp-content/uploads/2018/04/arrow-for-map.png) 97% / 15% no-repeat #333333;
     background-size: 20px 13px;
     color: #f3f3f3;
 }
 
 select.selector {
-    background: url(https://www.carbonbrief.org/wp-content/uploads/2019/04/dropdown-arrow-dark-2.png) 96% / 15% no-repeat #f3f3f3;
+    background: url(https://www.carbonbrief.org/wp-content/uploads/2019/04/dropdown-arrow-dark-2.png) 98% / 15% no-repeat #f3f3f3;
     background-size: 17px 11px;
     color: #333333;
 }
@@ -234,12 +235,6 @@ button:focus {
 
 button:active {
     transform: scale(0.99);
-}
-
-#key {
-    /* position: absolute;
-    top: 30px;
-    left: 65px; */
 }
 
 .colour-key {
@@ -375,7 +370,7 @@ i {
     stroke-width: 0.5px;
 }
 
-@media all and (max-width: 900px) {
+@media all and (max-width: 750px) {
 
     body {
         width: 700px;
@@ -406,6 +401,18 @@ i {
     #emissions {
         font-size: 13px;
     }
+
+    .selector {
+        width: 180px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
 }
 
 @media all and (max-width: 600px) {
@@ -422,16 +429,12 @@ i {
         font-size: 34px;
     }
 
-    .selector {
-        width: 180px;
-    }
-
     #budgetUser {
         font-size: 60px;
     }
 
     h2 {
-        font-size: 30px;
+        font-size: 28px;
     }
 
     #emissions {
