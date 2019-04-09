@@ -334,6 +334,12 @@ function update () {
         y.domain([-200, 1400]);
 
         // ADD BARS
+        svg.selectAll(".raised")
+        .each( function() {
+            // move previous negative values to back before transition
+            // to avoid messing up the order
+            d3.select(this).lower().classed("raised", false);
+        });
 
         svg.selectAll(".bar1")
             .data(data)
@@ -363,7 +369,15 @@ function update () {
                     h${-(x.bandwidth())}Z
                     `
                 }
-        });
+            })
+            .each(function(d) {
+
+                    if (d.two < 0) {
+                        // move negative values to the front
+                        d3.select(this).raise().classed("raised", true);
+                    }
+
+            });
 
         svg.selectAll(".bar2")
             .data(data)
@@ -394,6 +408,7 @@ function update () {
                     `
                 }
             });
+
 
         // UPDATE UI TEXT
 
@@ -479,7 +494,7 @@ function update () {
             .filter(function(d) { return d.age == age; })
             .style("fill", "#439AD2");
 
-        // update download button
+        // DOWNLOAD BUTTON
 
         // no need to go up a filepath since will be adding this to the homepage
         let fileName = region + "_" + emissions + ".csv";
