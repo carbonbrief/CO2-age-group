@@ -419,7 +419,9 @@ function update () {
         d3.selectAll("#budgetReference")
         .text(decimalFormat2(reference) + " times");
 
-        if (age == 1950) {
+        // hide text for negative numbers and 1950
+
+        if (age == 1950 || budgetUser < 0) {
             $("#comparison").css("visibility", "hidden");
         } else {
             $("#comparison").css("visibility", "visible");
