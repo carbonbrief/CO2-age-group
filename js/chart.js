@@ -37,9 +37,20 @@ const ry = 2;
 let budgetUser;
 let budgetReference;
 
+function extraAllowance () {
+    if ($(window).width() > 750) {
+        return 2.8;
+    } else if ($(window).width() > 600 && $(window).width() < 751) {
+        return 2.4;
+    } else {
+        return 2.2;
+    }
+}
+console.log(extraAllowance());
+
 let line = d3.line()
     .curve(d3.curveBasis)
-    .x(function(d) { return x(d.x) + 3; })
+    .x(function(d) { return x(d.x) + extraAllowance(); })
     .y(function(d) { return y(d.y); });
 
 // Get the data
