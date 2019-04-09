@@ -46,13 +46,10 @@ function hideIntro () {
 
     age = selectAge[1].options[selectAge[1].selectedIndex].value;
     region = selectRegion[1].options[selectRegion[1].selectedIndex].value;
-    //scenario = selectScenario[1].options[selectScenario[1].selectedIndex].value;
-    console.log(age + " " + region);
 
     // update other dropdowns
     selectAge[0].value = age;
     selectRegion[0].value = region;
-    //selectScenario[0].value = scenario;
 
     update();
 

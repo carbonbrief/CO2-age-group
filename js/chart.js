@@ -313,8 +313,6 @@ function update () {
 
     let file = "./data/" + region + "_" + emissions + ".csv";
 
-    console.log(file);
-
     // Get the data
     d3.csv(file, function(error, data) {
 
@@ -326,8 +324,6 @@ function update () {
             d.onepointfive = +d["1.5C"];
             d.two = +d["2C"];
         });
-        
-        console.log("data loaded");
 
         // Scale the range of the data
         x.domain(data.map(function(d) { return d.age; }));
