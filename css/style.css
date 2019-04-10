@@ -334,6 +334,19 @@ div.tooltip p {
     opacity: 0.5;
 }
 
+#logo-large {
+    height: 30px;
+    width: 115px;
+    background-image:url(../img/logo-large.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    visibility: visible;
+    opacity: 0.25;
+    position: absolute;
+    bottom: 20px;
+    right: 22px;
+}
+
 #logo-container {
     position: absolute;
     right: 0;
@@ -382,6 +395,11 @@ i {
         width: calc(100% - 20px);
     }
 
+    #intro {
+        width: calc(100% + 20px);
+    }
+    
+
     p {
         font-size: 14.5px;
     }
@@ -427,8 +445,17 @@ i {
         width: calc(100% - 10px);
     }
 
+    #intro {
+        width: calc(100% + 10px);
+    }
+
     #logo-container {
         margin-right: 10px;
+    }
+
+    #logo-large {
+        height: 27px;
+        width: 105px;
     }
 
     p {
