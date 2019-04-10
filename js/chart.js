@@ -44,8 +44,10 @@ function extraAllowance () {
         return 2.4;
     } else if ($(window).width() > 500 && $(window).width() < 651)   {
         return 2.2;
-    } else {
+    } else if ($(window).width() > 400 && $(window).width() < 501)   {
         return 1.2;
+    } else {
+        return 0.8;
     }
 }
 console.log(extraAllowance());

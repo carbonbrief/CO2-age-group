@@ -557,3 +557,26 @@ i {
         font-size: 11px;
     }
 }
+
+@media all and (max-width: 400px) {
+    body {
+        width: 350px;
+    }
+
+    .small {
+        display: none;
+    }
+
+    .large {
+        margin-right: 40px;
+    }
+
+    .axis {
+        font-size: 9px;
+    }
+
+    .gen-label {
+        text-anchor: middle;
+        font-size: 8px;
+    }
+}
