@@ -415,10 +415,20 @@ i {
     }
 }
 
-@media all and (max-width: 600px) {
+@media all and (max-width: 650px) {
 
     body {
-        width: 650px;
+        width: 620px;
+    }
+
+    #container {
+        margin-left: 5px;
+        margin-right: 5px;
+        width: calc(100% - 10px);
+    }
+
+    #logo-container {
+        margin-right: 10px;
     }
 
     p {
@@ -438,6 +448,11 @@ i {
     }
 
     #emissions {
+        font-size: 12px;
+    }
+
+
+    div.tooltip p {
         font-size: 12px;
     }
 }
