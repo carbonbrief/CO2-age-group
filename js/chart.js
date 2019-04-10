@@ -103,7 +103,7 @@ d3.csv("./data/United Kingdom_national.csv", function(error, data) {
 
     svg.append("text")
     .attrs({x: x(1973), y: y(-60), "class": "gen-label"})
-    .text("Gen Y");
+    .text("Gen X");
 
     // Boomers
     svg.append("rect")
