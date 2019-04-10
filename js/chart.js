@@ -40,10 +40,12 @@ let budgetReference;
 function extraAllowance () {
     if ($(window).width() > 750) {
         return 2.8;
-    } else if ($(window).width() > 600 && $(window).width() < 751) {
+    } else if ($(window).width() > 650 && $(window).width() < 751) {
         return 2.4;
-    } else {
+    } else if ($(window).width() > 500 && $(window).width() < 651)   {
         return 2.2;
+    } else {
+        return 1.2;
     }
 }
 console.log(extraAllowance());

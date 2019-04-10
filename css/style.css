@@ -412,10 +412,6 @@ i {
         font-size: 64px;
     }
 
-    h2 {
-        font-size: 34px;
-    }
-
     #emissions {
         font-size: 13px;
     }
@@ -475,6 +471,10 @@ i {
         font-size: 28px;
     }
 
+    h3 {
+        font-size: 17px;
+    }
+
     #emissions {
         font-size: 12px;
     }
@@ -482,5 +482,78 @@ i {
 
     div.tooltip p {
         font-size: 12px;
+    }
+}
+
+@media all and (max-width: 500px) {
+    body {
+        width: 400px;
+    }
+
+    .selector2 {
+        width: 220px;
+        font-size: 13px;
+    }
+
+    select.selector2 {
+        font-size: 13px;
+    }
+
+    #wrapper {
+        width: 250px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 15px;
+    }
+
+    p {
+        font-size: 13px;
+    }
+
+    #budgetUser {
+        font-size: 56px;
+    }
+
+    #emissions {
+        font-size: 11px;
+    }
+
+    .gen-label {
+        text-anchor: middle;
+        font-size: 9.5px;
+    }
+
+    .axis {
+        font-size: 10.5px;
+    }
+
+    .large {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    select.selector {
+        font-size: 10.5px;
+    }
+
+    .selector {
+        width: 120px;
+    }
+
+    #toolbar {
+        width: 120px;
+    }
+
+    li {
+        font-size: 11px;
     }
 }
