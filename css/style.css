@@ -429,6 +429,7 @@ i {
     }
 }
 
+/* breakpoint for the Guardian */
 @media all and (max-width: 650px) {
 
     body {
@@ -483,6 +484,15 @@ i {
     div.tooltip p {
         font-size: 12px;
     }
+}
+
+/* breakpoint for Le Monde */
+@media all and (max-width: 570px) {
+
+    body {
+        width: 550px;
+    }
+
 }
 
 @media all and (max-width: 500px) {
