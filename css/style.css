@@ -429,6 +429,20 @@ i {
     }
 }
 
+/* extra breakpoint for Le Monde */
+@media all and (max-width: 700px) {
+
+    body {
+        width: 660px;
+    }
+
+    #logo-container {
+        margin-right: 10px;
+    }
+
+}
+
+
 /* breakpoint for the Guardian */
 @media all and (max-width: 650px) {
 
@@ -444,10 +458,6 @@ i {
 
     #intro {
         width: calc(100% + 10px);
-    }
-
-    #logo-container {
-        margin-right: 10px;
     }
 
     #logo-large {
